@@ -1,0 +1,28 @@
+@use 'tailwindcss';
+
+@theme {
+    --color-mint: #09543d;
+    --color-rose: #ffa9e9;
+}
+
+.link-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10rem;
+    background: var(--color-rose);
+    padding: 1rem 2rem;
+    color: #461e10;
+    font-weight: 600;
+    text-align: center;
+}
+
+.highlight {
+    background: linear-gradient(to top, transparent 10%, #ffa9e9 10.01%, #ffa9e9 83%, transparent 83.01%);
+    color: #461e10;
+}
+
+.not-highlight {
+    opacity: 50%;
+    text-decoration-line: line-through;
+}

@@ -1,0 +1,20 @@
+{
+    "locale": "fr",
+    "translations": {
+        "954531996557835389": " Appelez-nous ",
+        "7349318811028210179": "Art, Spotify, Album, Poster, Affiche, Cover, Musique",
+        "goBackAction": "Retourner en arrière",
+        "2597356122971023471": " Toutes les {$START_TAG_SPAN}bière froides{$CLOSE_TAG_SPAN} à côtés de chez {$START_TAG_SPAN}toi{$CLOSE_TAG_SPAN}. ",
+        "3664794573386844401": "Prendre contact",
+        "2631837882694083716": "Pour tous les amateurs de bières,",
+        "8548644033963887784": " Trouvez {$START_TAG_SPAN}chaussure{$CLOSE_TAG_SPAN}{$START_TAG_SPAN_1}bière{$CLOSE_TAG_SPAN} à votre {$START_TAG_SPAN}pied{$CLOSE_TAG_SPAN}{$START_TAG_SPAN_1}gosier{$CLOSE_TAG_SPAN}. ",
+        "6946165056866020987": " Vous trouverez forcément une bière qui vous conviendra, sinon notre brasseur viendra vous casser la gueule. ",
+        "8941173632717047581": " Toutes nos bières ",
+        "7221981865634884180": "Des bières et des bières",
+        "709964037683644780": "Transformez vos albums de musique préférés en magnifique poster avec {$name}.Créez des affiches personnalisées et uniques à partir de vos covers d'albums favoris.",
+        "7896792139916374819": "Erreur 404,",
+        "847700902273343159": "{$START_TAG_SPAN}Oops{$CLOSE_TAG_SPAN}, la page que vous cherchez n'existe pas. ",
+        "3381485041260180128": "Retourner à l'accueil",
+        "3148760055428572080": "Pintes moi la gueule"
+    }
+}

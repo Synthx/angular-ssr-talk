@@ -1,0 +1,17 @@
+<div class="min-h-screen flex flex-col p-4">
+    @if (beer(); as beer) {
+        <div
+            class="relative flex-1 flex items-center justify-center p-8 rounded-2xl text-white"
+            [style.background]="beer.color"
+        >
+            <img [alt]="beer.name" [src]="beer.image" />
+            <div class="flex flex-col items-start gap-2">
+                <h1 class="text-5xl uppercase font-bold">
+                    {{ beer.name }}
+                </h1>
+                <p>{{ beer.abv | percent }} - {{ beer.price | localeCurrency }}</p>
+                <p>{{ beer.description }}</p>
+            </div>
+        </div>
+    }
+</div>

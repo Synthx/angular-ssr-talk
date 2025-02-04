@@ -1,0 +1,11 @@
+<a
+    class="flex flex-col gap-2 rounded-xl px-2 py-4 text-white"
+    [routerLink]="['/beers', beer().id]"
+    [style.background-color]="beer().color"
+>
+    <img [alt]="beer().name" [src]="beer().image" />
+    <div class="flex flex-col text-center uppercase">
+        <span class="text-xl font-bold">{{ beer().name }}</span>
+        <span class="text-base">{{ beer().abv | percent }} - {{ beer().price | localeCurrency }}</span>
+    </div>
+</a>

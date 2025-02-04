@@ -1,0 +1,6 @@
+<div class="h-screen flex p-4">
+    <textarea class="flex-1" [formControl]="codeControl"> </textarea>
+    <pre class="flex-1 border-1 overflow-auto">
+        {{ escapedCode() }}
+    </pre>
+</div>

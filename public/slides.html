@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Angular SSR | Jetdev</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <link href="/scripts/reveal.js/reveal.css" rel="stylesheet" />
+        <link href="/scripts/reveal.js/theme/night.css" id="theme" rel="stylesheet" />
+        <link href="/scripts/reveal.js/plugin/highlight/monokai.css" rel="stylesheet" />
+        <style>
+            :root {
+                --primary: #ff772c;
+                --contrast: #ffffff;
+
+                --r-background-color: #222628;
+                --r-main-color: var(--contrast);
+                --r-heading-color: var(--primary);
+                --r-heading-font: 'Gosha', sans-serif;
+                --r-link-color: var(--primary);
+            }
+
+            @font-face {
+                font-style: normal;
+                font-weight: 700;
+                src: url(/fonts/gosha.ttf) format('TrueType');
+                font-family: 'Gosha';
+                font-display: auto;
+            }
+
+            .highlighted {
+                color: var(--primary);
+                font-weight: 700;
+                font-family: 'Gosha', sans-serif;
+            }
+
+            .jetdev-logo {
+                position: absolute;
+                bottom: 40px;
+                left: 40px;
+                z-index: 100;
+            }
+        </style>
+    </head>
+    <body>
+        <img alt="Jetdev" class="jetdev-logo" src="/images/logo.svg" width="250" />
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <h2>Angular ❤️ SSR</h2>
+                </section>
+                <section>
+                    <section data-auto-animate>
+                        <h3>Web rendering 🧐</h3>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Web rendering 🧐</h3>
+                        <p>
+                            SSR ? CSR ? SSG ? <span class="fragment fade-up">ISR ?</span>
+                            <span class="fragment fade-up" style="color: red">LOSC ?</span>
+                        </p>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Client Side Rendering (CSR)</h2>
+                        <div
+                            style="
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                flex-wrap: wrap;
+                                gap: 20px;
+                                padding: 0 50px;
+                            "
+                        >
+                            <img alt="Angular" class="fragment fade-up" height="150" data-src="/images/angular.png" />
+                            <img alt="React" class="fragment fade-up" height="150" data-src="/images/react.png" />
+                            <img alt="VueJS" class="fragment fade-up" height="150" data-src="/images/vue.png" />
+                            <img alt="Svelte" class="fragment fade-up" height="150" data-src="/images/svelte.png" />
+                            <img alt="SolidJS" class="fragment fade-up" height="150" data-src="/images/solidjs.png" />
+                        </div>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Client Side Rendering (CSR)</h2>
+                        <img alt="CSR" height="300" data-src="/images/csr.webp" />
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Server Side Rendering (SSR)</h2>
+                        <img alt="SSR" height="300" data-src="/images/ssr.webp" />
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Static Site Generation (SSG)</h2>
+                        <img alt="SSR" height="300" data-src="/images/ssg.webp" />
+                    </section>
+                </section>
+                <section>
+                    <section data-auto-animate>
+                        <h2>Demo application 🍻</h2>
+                        <p>
+                            I love : <span class="fragment fade-up">b</span><span class="fragment fade-up">e</span
+                            ><span class="fragment fade-up">e</span><span class="fragment fade-up">r</span>
+                        </p>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Demo application 🍻</h2>
+                        <p>About beers (a lot of beer):</p>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Demo application 🍻</h2>
+                        <p>About beers (a lot of beer):</p>
+                        <ul>
+                            <li>Homepage</li>
+                            <li>Contact</li>
+                            <li>Beer list</li>
+                            <li>Beer information</li>
+                        </ul>
+                    </section>
+                    <section data-background-iframe="/" data-background-interactive></section>
+                </section>
+                <section>
+                    <section data-auto-animate>
+                        <h3>Why use SSR ? 🤔</h3>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Why use SSR ? 🤔</h3>
+                        <ul>
+                            <li>Performance ⚡</li>
+                        </ul>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Why use SSR ? 🤔</h3>
+                        <ul>
+                            <li>Performance ⚡</li>
+                            <li>User experience 👤</li>
+                        </ul>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Why use SSR ? 🤔</h3>
+                        <ul>
+                            <li>Performance ⚡</li>
+                            <li>User experience 👤</li>
+                            <li>SEO 🔎</li>
+                        </ul>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Why use SSR ? 🤔</h3>
+                        <img alt="Morsay" height="400" data-src="https://i.makeagif.com/media/11-19-2021/Nufv_D.gif" />
+                    </section>
+                </section>
+                <section
+                    data-background-image="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXdqaGYwd2I4ajJvdWJ5dTUzMHA0c2x1aTU0ZWpmaTZrZGs4cjRoNyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QbumCX9HFFDQA/giphy.webp"
+                >
+                    <h2>Let's go 🤘</h2>
+                </section>
+                <section>
+                    <section data-auto-animate>
+                        <h2>CSR 🐛</h2>
+                        <pre data-id="csr-code">
+                          <code class="bash" data-trim>
+                            ng serve
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>CSR 🐛</h2>
+                        <pre data-id="csr-code">
+                          <code class="bash" data-trim>
+                            &num; ng serve
+                            curl http:&sol;&sol;localhost:4200
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>CSR 🐛</h2>
+                        <pre data-id="csr-code">
+                          <code class="html" data-trim>
+&lt;&excl;DOCTYPE html&gt;
+&lt;html lang=&quot;fr&quot; dir=&quot;ltr&quot;&gt;
+    &lt;head&gt;
+        &lt;script type=&quot;module&quot; src=&quot;&sol;&commat;vite&sol;client&quot;&gt;&lt;&sol;script&gt;
+
+        &lt;meta charset=&quot;utf-8&quot; &sol;&gt;
+        &lt;title i18n=&quot;&quot;&gt;Pintes moi la gueule&lt;&sol;title&gt;
+        &lt;base href=&quot;&sol;&quot; &sol;&gt;
+        &lt;meta content=&quot;width=device-width, initial-scale=1&quot; name=&quot;viewport&quot; &sol;&gt;
+        &lt;link href=&quot;favicon.ico&quot; rel=&quot;icon&quot; type=&quot;image&sol;x-icon&quot; &sol;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot; &sol;&gt;
+    &lt;&sol;head&gt;
+
+    &lt;body ngcm=&quot;&quot;&gt;
+        &lt;app-root&gt;&lt;&sol;app-root&gt;
+        &lt;script src=&quot;polyfills.js&quot; type=&quot;module&quot;&gt;&lt;&sol;script&gt;
+        &lt;script src=&quot;main.js&quot; type=&quot;module&quot;&gt;&lt;&sol;script&gt;
+        &lt;link rel=&quot;modulepreload&quot; href=&quot;chunk-NYNHMK4N.js&quot; &sol;&gt;
+    &lt;&sol;body&gt;
+&lt;&sol;html&gt;
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>CSR 🐛</h2>
+                        <pre data-id="csr-code">
+                          <code class="shell" data-trim>
+                            ng build
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>CSR 🐛</h2>
+                        <pre data-id="csr-code">
+                          <code class="shell" data-trim>
+                            ng build
+                          </code>
+                        </pre>
+                        <img alt="CSR build" height="400" data-src="/images/csr-build.png" />
+                    </section>
+                </section>
+                <section>
+                    <section data-auto-animate>
+                        <h3>Add SSR ✨</h3>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Add SSR ✨</h3>
+                        <pre data-id="add-ssr-code">
+                          <code class="bash" data-trim>
+                            ng add &commat;angular&sol;ssr
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Add SSR ✨</h3>
+                        <pre data-id="add-ssr-code">
+                          <code class="bash" data-trim>
+                            ng add &commat;angular&sol;ssr
+                          </code>
+                        </pre>
+                        <ul>
+                            <li>Add dependencies</li>
+                            <li>Change output mode (static -> server)</li>
+                            <li>Setup server (express)</li>
+                        </ul>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Add SSR ✨</h3>
+                        <pre data-id="add-ssr-code">
+                          <code class="bash" data-trim>
+                            &num; ng add &commat;angular&sol;ssr
+                            ng serve
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Add SSR ✨</h3>
+                        <pre data-id="add-ssr-code">
+                          <code class="bash" data-trim>
+                            &num; ng add &commat;angular&sol;ssr
+                            &num; ng serve
+                            curl http:&sol;&sol;localhost:4200
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Add SSR ✨</h3>
+                        <pre data-id="add-ssr-code">
+                          <code class="html" data-trim>
+&lt;&excl;DOCTYPE html&gt;
+&lt;html lang=&quot;fr&quot; dir=&quot;ltr&quot;&gt;
+    &lt;head&gt;
+        &lt;script type=&quot;module&quot; src=&quot;&sol;&commat;vite&sol;client&quot;&gt;&lt;&sol;script&gt;
+
+        &lt;meta charset=&quot;utf-8&quot; &sol;&gt;
+        &lt;title i18n=&quot;&quot;&gt;Des bières et des bières &verbar; Pintes moi la gueule&lt;&sol;title&gt;
+        &lt;base href=&quot;&sol;&quot; &sol;&gt;
+        &lt;meta content=&quot;width=device-width, initial-scale=1&quot; name=&quot;viewport&quot; &sol;&gt;
+        &lt;link href=&quot;favicon.ico&quot; rel=&quot;icon&quot; type=&quot;image&sol;x-icon&quot; &sol;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot; &sol;&gt;
+        &lt;style ng-app-id=&quot;ng&quot;&gt;
+            .contact-link[_ngcontent-ng-c2412861752] &lcub;
+                position: fixed;
+                right: 2rem;
+                bottom: 2rem;
+            &rcub;
+            &sol;*&num; sourceMappingURL=&sol;app.component.css.map *&sol;
+        &lt;&sol;style&gt;
+        &lt;meta name=&quot;author&quot; content=&quot;Remi Taniel&quot; &sol;&gt;
+        &lt;meta name=&quot;keywords&quot; content=&quot;Bières, Alcool, Cool, Pinpin, Jetdev, Fuck-Lens&quot; &sol;&gt;
+        &lt;meta property=&quot;og:site_name&quot; content=&quot;Pintes moi la gueule&quot; &sol;&gt;
+        &lt;meta property=&quot;og:url&quot; content=&quot;http:&sol;&sol;localhost:4200&quot; &sol;&gt;
+        &lt;meta property=&quot;og:type&quot; content=&quot;website&quot; &sol;&gt;
+        &lt;meta property=&quot;og:title&quot; content=&quot;Des bières et des bières &verbar; Pintes moi la gueule&quot; &sol;&gt;
+        &lt;meta name=&quot;description&quot; content=&quot;Découvrez des bières aux arômes incroyables qui vont vous rappeler votre enfance tah l&apos;époque&quot; &sol;&gt;
+        &lt;meta property=&quot;og:description&quot; content=&quot;Découvrez des bières aux arômes incroyables qui vont vous rappeler votre enfance tah l&apos;époque&quot; &sol;&gt;
+    &lt;&sol;head&gt;
+
+    &lt;body&gt;
+        &lt;&excl;--nghm--&gt;
+        &lt;app-root ng-version=&quot;19.1.5&quot; _nghost-ng-c2412861752=&quot;&quot; ngskiphydration=&quot;&quot; ng-server-context=&quot;ssr&quot;&gt;
+            &lt;router-outlet _ngcontent-ng-c2412861752=&quot;&quot;&gt;&lt;&sol;router-outlet&gt;
+            &lt;app-home&gt;
+                &lt;div class=&quot;min-h-screen flex flex-col p-4&quot;&gt;
+                    &lt;div class=&quot;relative flex-1 flex flex-col items-center justify-center p-8 rounded-2xl bg-mint text-white&quot;&gt;
+                        &lt;p class=&quot;text-base font-bold&quot;&gt;Pour tous les amateurs de bières,&lt;&sol;p&gt;
+                        &lt;h1 class=&quot;text-5xl text-center uppercase font-bold&quot;&gt;
+                            Trouvez &lt;span class=&quot;not-highlight&quot;&gt;chaussure&lt;&sol;span&gt;&lt;span class=&quot;highlight&quot;&gt;bière&lt;&sol;span&gt; à votre &lt;span class=&quot;not-highlight&quot;&gt;pied&lt;&sol;span&gt;&lt;span class=&quot;highlight&quot;&gt;gosier&lt;&sol;span&gt;.
+                        &lt;&sol;h1&gt;
+                        &lt;p class=&quot;text-base&quot;&gt;Vous trouverez forcément une bière qui vous conviendra, sinon notre brasseur viendra vous casser la gueule.&lt;&sol;p&gt;
+                        &lt;a routerlink=&quot;&sol;beers&quot; class=&quot;link-button&quot; ng-reflect-router-link=&quot;&sol;beers&quot; href=&quot;&sol;beers&quot;&gt; Toutes nos bières &lt;&sol;a&gt;
+                    &lt;&sol;div&gt;
+                &lt;&sol;div&gt;
+            &lt;&sol;app-home&gt;
+            &lt;&excl;--container--&gt;
+            &lt;a _ngcontent-ng-c2412861752=&quot;&quot; routerlink=&quot;&sol;contact&quot; class=&quot;contact-link link-button&quot; ng-reflect-router-link=&quot;&sol;contact&quot; href=&quot;&sol;contact&quot;&gt; Nous contacter &lt;&sol;a&gt;
+        &lt;&sol;app-root&gt;
+        &lt;script src=&quot;polyfills.js&quot; type=&quot;module&quot;&gt;&lt;&sol;script&gt;
+        &lt;script src=&quot;main.js&quot; type=&quot;module&quot;&gt;&lt;&sol;script&gt;
+        &lt;link rel=&quot;modulepreload&quot; href=&quot;chunk-NYNHMK4N.js&quot; &sol;&gt;
+
+        &lt;script id=&quot;ng-state&quot; type=&quot;application&sol;json&quot;&gt;
+            &lcub; &quot;__nghData__&quot;: [] &rcub;
+        &lt;&sol;script&gt;
+    &lt;&sol;body&gt;
+&lt;&sol;html&gt;
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Add SSR ✨</h3>
+                        <pre data-id="add-ssr-code">
+                          <code class="bash" data-trim>
+                            ng build
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Add SSR ✨</h3>
+                        <pre data-id="add-ssr-code">
+                          <code class="bash" data-trim>
+                            ng build
+                          </code>
+                        </pre>
+                        <img alt="SSR build" height="400" data-src="/images/ssr-build.png" />
+                    </section>
+                </section>
+                <section>
+                    <section data-auto-animate>
+                        <h3>SSR cheatsheet 📝</h3>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>SSR cheatsheet 📝</h3>
+                        <p>
+                            App cannot make use of browser-specific global objects like
+                            <span class="highlighted">window</span>, <span class="highlighted">document</span>,
+                            <span class="highlighted">navigator</span>, or <span class="highlighted">location</span> as
+                            well as certain properties of <span class="highlighted">HTMLElement</span>.
+                        </p>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>SSR cheatsheet 📝</h3>
+                        <pre data-id="ssr-cheatsheet-code">
+                          <code class="typescript" data-trim data-line-numbers>
+&commat;Component();
+export default class HomeComponent implements OnInit &lcub;
+  readonly &num;platformId = inject(PLATFORM_ID);
+
+  ngOnInit(): void &lcub;
+    if (isPlatformServer(this.&num;platformId)) &lcub;
+      console.log(&quot;log into console and not browser&quot;);
+    &rcub;
+
+    if (isPlatformBrowser(this.&num;platformId)) &lcub;
+      console.log(&quot;log into browser and not console&quot;);
+    &rcub;
+  &rcub;
+&rcub;
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>SSR cheatsheet 📝 - Dynamic data</h3>
+                        <p>SSR use 2 things:</p>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>SSR cheatsheet 📝 - Dynamic data</h3>
+                        <p>SSR use 2 things:</p>
+                        <ul>
+                            <li>Zone.js when stable</li>
+                            <li class="fragment fade-up">Promise or PendingTasks service otherwise</li>
+                        </ul>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>SSR cheatsheet 📝 - Dynamic data</h3>
+                        <pre>
+                          <code class="typescript" data-trim data-line-numbers>
+&commat;Component()
+export default class BeerDetailComponent implements OnInit &lcub;
+  readonly id = input.required&lt;string&gt;();
+
+  readonly &num;store = inject(BeerDetailStore);
+  readonly &num;seoService = inject(SeoService);
+
+  beer = this.&num;store.beer;
+
+  constructor() &lcub;
+    effect(() =&gt; &lcub;
+      const beer = this.beer();
+      if (beer) &lcub;
+        this.&num;seoService.setTitle(beer.name);
+        this.&num;seoService.setDescription(beer.description);
+      &rcub;
+    &rcub;);
+  &rcub;
+
+  async ngOnInit() &lcub;
+    await this.&num;store.init(this.id());
+  &rcub;
+&rcub;
+                          </code>
+                          </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>SSR cheatsheet 📝 - Dynamic data</h3>
+                        <pre>
+                          <code class="bash" data-trim>
+                            curl http:&sol;&sol;localhost:4200&sol;beers&sol;3
+                          </code>
+                          </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>SSR cheatsheet 📝 - Dynamic data</h3>
+                        <pre>
+                          <code class="html" data-trim>
+&lt;&excl;DOCTYPE html&gt;
+&lt;html lang=&quot;fr&quot; dir=&quot;ltr&quot;&gt;
+    &lt;head&gt;
+        &lt;script type=&quot;module&quot; src=&quot;&sol;&commat;vite&sol;client&quot;&gt;&lt;&sol;script&gt;
+
+        &lt;meta charset=&quot;utf-8&quot; &sol;&gt;
+        &lt;title i18n=&quot;&quot;&gt;PICARDIE CHERIE &verbar; Pintes moi la gueule&lt;&sol;title&gt;
+        &lt;base href=&quot;&sol;&quot; &sol;&gt;
+        &lt;meta content=&quot;width=device-width, initial-scale=1&quot; name=&quot;viewport&quot; &sol;&gt;
+        &lt;link href=&quot;favicon.ico&quot; rel=&quot;icon&quot; type=&quot;image&sol;x-icon&quot; &sol;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot; &sol;&gt;
+        &lt;style ng-app-id=&quot;ng&quot;&gt;
+            .contact-link[_ngcontent-ng-c2412861752] &lcub;
+                position: fixed;
+                right: 2rem;
+                bottom: 2rem;
+            &rcub;
+            &sol;*&num; sourceMappingURL=&sol;app.component.css.map *&sol;
+        &lt;&sol;style&gt;
+        &lt;meta name=&quot;author&quot; content=&quot;Remi Taniel&quot; &sol;&gt;
+        &lt;meta name=&quot;keywords&quot; content=&quot;Bières, Alcool, Cool, Pinpin, Jetdev, Fuck-Lens&quot; &sol;&gt;
+        &lt;meta property=&quot;og:site_name&quot; content=&quot;Pintes moi la gueule&quot; &sol;&gt;
+        &lt;meta property=&quot;og:url&quot; content=&quot;http:&sol;&sol;localhost:4200&quot; &sol;&gt;
+        &lt;meta property=&quot;og:type&quot; content=&quot;website&quot; &sol;&gt;
+        &lt;meta property=&quot;og:title&quot; content=&quot;PICARDIE CHERIE &verbar; Pintes moi la gueule&quot; &sol;&gt;
+        &lt;meta name=&quot;description&quot; content=&quot;Une bière où l&apos;acidité rencontre la rhubarbe, pour un final d&apos;une grande gourmandise.&quot; &sol;&gt;
+        &lt;meta property=&quot;og:description&quot; content=&quot;Une bière où l&apos;acidité rencontre la rhubarbe, pour un final d&apos;une grande gourmandise.&quot; &sol;&gt;
+    &lt;&sol;head&gt;
+
+    &lt;body&gt;
+        &lt;&excl;--nghm--&gt;
+        &lt;app-root ng-version=&quot;19.1.5&quot; _nghost-ng-c2412861752=&quot;&quot; ngskiphydration=&quot;&quot; ng-server-context=&quot;ssr&quot;&gt;
+            &lt;router-outlet _ngcontent-ng-c2412861752=&quot;&quot;&gt;&lt;&sol;router-outlet&gt;
+            &lt;app-beer-detail&gt;
+                &lt;div class=&quot;min-h-screen flex flex-col p-4&quot;&gt;
+                    &lt;div class=&quot;relative flex-1 flex items-center justify-center p-8 rounded-2xl text-white&quot; style=&quot;background: &num;9daee6;&quot;&gt;
+                        &lt;img alt=&quot;PICARDIE CHERIE&quot; src=&quot;https:&sol;&sol;briquehouse.shop&sol;cdn&sol;shop&sol;files&sol;23_9-8_501x.png?v=1714734968&quot; &sol;&gt;
+                        &lt;div class=&quot;flex flex-col items-start gap-2&quot;&gt;
+                            &lt;h1 class=&quot;text-5xl uppercase font-bold&quot;&gt;PICARDIE CHERIE&lt;&sol;h1&gt;
+                            &lt;p&gt;300&amp;nbsp;% - 2,90&amp;nbsp;€&lt;&sol;p&gt;
+                            &lt;p&gt;Une bière où l&apos;acidité rencontre la rhubarbe, pour un final d&apos;une grande gourmandise.&lt;&sol;p&gt;
+                        &lt;&sol;div&gt;
+                    &lt;&sol;div&gt;
+                    &lt;&excl;--container--&gt;
+                &lt;&sol;div&gt;
+            &lt;&sol;app-beer-detail&gt;
+            &lt;&excl;--container--&gt;
+            &lt;a _ngcontent-ng-c2412861752=&quot;&quot; routerlink=&quot;&sol;contact&quot; class=&quot;contact-link link-button&quot; ng-reflect-router-link=&quot;&sol;contact&quot; href=&quot;&sol;contact&quot;&gt; Nous contacter &lt;&sol;a&gt;
+        &lt;&sol;app-root&gt;
+        &lt;script src=&quot;polyfills.js&quot; type=&quot;module&quot;&gt;&lt;&sol;script&gt;
+        &lt;script src=&quot;main.js&quot; type=&quot;module&quot;&gt;&lt;&sol;script&gt;
+        &lt;link rel=&quot;modulepreload&quot; href=&quot;chunk-22KIX3YK.js&quot; &sol;&gt;
+        &lt;link rel=&quot;modulepreload&quot; href=&quot;chunk-PDGZ4CGL.js&quot; &sol;&gt;
+
+        &lt;script id=&quot;ng-state&quot; type=&quot;application&sol;json&quot;&gt;
+            &lcub;
+                &quot;323157873&quot;: &lcub;
+                    &quot;b&quot;: &lcub;
+                        &quot;id&quot;: &quot;3&quot;,
+                        &quot;name&quot;: &quot;PICARDIE CHERIE&quot;,
+                        &quot;image&quot;: &quot;https:&sol;&sol;briquehouse.shop&sol;cdn&sol;shop&sol;files&sol;23_9-8_501x.png?v=1714734968&quot;,
+                        &quot;description&quot;: &quot;Une bière où l&apos;acidité rencontre la rhubarbe, pour un final d&apos;une grande gourmandise.&quot;,
+                        &quot;color&quot;: &quot;&num;9daee6&quot;,
+                        &quot;abv&quot;: 3,
+                        &quot;price&quot;: 2.9
+                    &rcub;,
+                    &quot;h&quot;: &lcub;&rcub;,
+                    &quot;s&quot;: 200,
+                    &quot;st&quot;: &quot;OK&quot;,
+                    &quot;u&quot;: &quot;&sol;api&sol;beers&sol;3&quot;,
+                    &quot;rt&quot;: &quot;json&quot;
+                &rcub;,
+                &quot;__nghData__&quot;: []
+            &rcub;
+        &lt;&sol;script&gt;
+    &lt;&sol;body&gt;
+&lt;&sol;html&gt;
+                          </code>
+                          </pre>
+                    </section>
+                </section>
+                <section>
+                    <section data-auto-animate>
+                        <h3>Hybride rendering 🔥</h3>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Hybride rendering 🔥</h3>
+                        <p>
+                            It allows you to render different parts of your application using
+                            <span class="highlighted">different strategies</span>.
+                        </p>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Hybride rendering 🔥</h3>
+                        <ul>
+                            <li>Greater flexibility</li>
+                            <li>Built-in i18n</li>
+                            <li>Environment agnostic</li>
+                            <li>Seamless dev server integration</li>
+                        </ul>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Hybride rendering 🔥</h3>
+                        <pre data-id="hybrid-rendering-code">
+                          <code class="typescript" data-trim data-line-numbers>
+export const serverRoutes: ServerRoute[] = [
+  &lcub;
+    path: &quot;**&quot;,
+    renderMode: RenderMode.Client,
+  &rcub;,
+];
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Hybride rendering 🔥</h3>
+                        <pre data-id="hybrid-rendering-code">
+                          <code class="typescript" data-trim data-line-numbers>
+                            export const serverRoutes: ServerRoute[] = [
+                              &lcub;
+                                path: &apos;&apos;,
+                                renderMode: RenderMode.Server,
+                              &rcub;,
+                              &lcub;
+                                path: &apos;**&apos;,
+                                renderMode: RenderMode.Client,
+                              &rcub;,
+                            ];
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Hybride rendering 🔥</h3>
+                        <pre data-id="hybrid-rendering-code">
+                          <code class="typescript" data-trim data-line-numbers>
+export const serverRoutes: ServerRoute[] = [
+  &lcub;
+    path: &quot;&quot;,
+    renderMode: RenderMode.Server,
+  &rcub;,
+  &lcub;
+    path: &quot;contact&quot;,
+    renderMode: RenderMode.Prerender,
+  &rcub;,
+  &lcub;
+    path: &quot;**&quot;,
+    renderMode: RenderMode.Client,
+  &rcub;,
+];
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Hybride rendering 🔥</h3>
+                        <pre data-id="hybrid-rendering-code">
+                          <code class="typescript" data-trim data-line-numbers>
+export const serverRoutes: ServerRoute[] = [
+  &lcub;
+    path: &quot;&quot;,
+    renderMode: RenderMode.Prerender,
+  &rcub;,
+  &lcub;
+    path: &quot;contact&quot;,
+    renderMode: RenderMode.Prerender,
+  &rcub;,
+  &lcub;
+    path: &quot;beers&quot;,
+    renderMode: RenderMode.Server,
+  &rcub;,
+  &lcub;
+    path: &quot;beers&sol;:id&quot;,
+    renderMode: RenderMode.Server,
+  &rcub;,
+  &lcub;
+    path: &quot;**&quot;,
+    renderMode: RenderMode.Client,
+  &rcub;,
+];
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Hybride rendering 🔥</h3>
+                        <img alt="SSG server" height="400" data-src="/images/ssg-server.png" />
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Hybride rendering 🔥</h3>
+                        <img alt="SSG client" height="400" data-src="/images/ssg-client.png" />
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Hybride rendering 🔥</h3>
+                        <pre>
+                          <code class="bash" data-trim>
+                            curl http:&sol;&sol;localhost:4200&sol;contact
+                          </code>
+                        </pre>
+                    </section>
+                    <section data-auto-animate>
+                        <h3>Hybride rendering 🔥</h3>
+                        <pre data-id="ssg-rendering-code">
+                          <code class="html" data-trim data-line-numbers>
+&lt;&excl;DOCTYPE html&gt;
+&lt;html lang=&quot;fr&quot; dir=&quot;ltr&quot;&gt;
+    &lt;head&gt;
+        &lt;script type=&quot;module&quot; src=&quot;&sol;&commat;vite&sol;client&quot;&gt;&lt;&sol;script&gt;
+
+        &lt;meta charset=&quot;utf-8&quot; &sol;&gt;
+        &lt;title i18n=&quot;&quot;&gt;Prendre contact &verbar; Pintes moi la gueule&lt;&sol;title&gt;
+        &lt;base href=&quot;&sol;&quot; &sol;&gt;
+        &lt;meta content=&quot;width=device-width, initial-scale=1&quot; name=&quot;viewport&quot; &sol;&gt;
+        &lt;link href=&quot;favicon.ico&quot; rel=&quot;icon&quot; type=&quot;image&sol;x-icon&quot; &sol;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;styles.css&quot; &sol;&gt;
+        &lt;style ng-app-id=&quot;ng&quot;&gt;
+            .contact-link[_ngcontent-ng-c2412861752] &lcub;
+                position: fixed;
+                right: 2rem;
+                bottom: 2rem;
+            &rcub;
+            &sol;*&num; sourceMappingURL=&sol;app.component.css.map *&sol;
+        &lt;&sol;style&gt;
+        &lt;meta name=&quot;author&quot; content=&quot;Remi Taniel&quot; &sol;&gt;
+        &lt;meta name=&quot;keywords&quot; content=&quot;Bières, Alcool, Cool, Pinpin, Jetdev, Fuck-Lens&quot; &sol;&gt;
+        &lt;meta property=&quot;og:site_name&quot; content=&quot;Pintes moi la gueule&quot; &sol;&gt;
+        &lt;meta property=&quot;og:url&quot; content=&quot;http:&sol;&sol;localhost:4200&quot; &sol;&gt;
+        &lt;meta property=&quot;og:type&quot; content=&quot;website&quot; &sol;&gt;
+        &lt;meta property=&quot;og:title&quot; content=&quot;Prendre contact &verbar; Pintes moi la gueule&quot; &sol;&gt;
+        &lt;meta name=&quot;description&quot; content=&quot;&quot; &sol;&gt;
+        &lt;meta property=&quot;og:description&quot; content=&quot;&quot; &sol;&gt;
+    &lt;&sol;head&gt;
+
+    &lt;body&gt;
+        &lt;&excl;--nghm--&gt;
+        &lt;app-root ng-version=&quot;19.1.5&quot; _nghost-ng-c2412861752=&quot;&quot; ngskiphydration=&quot;&quot; ng-server-context=&quot;ssg&quot;&gt;
+            &lt;router-outlet _ngcontent-ng-c2412861752=&quot;&quot;&gt;&lt;&sol;router-outlet&gt;
+            &lt;app-contact&gt;
+                &lt;a aria-label=&quot;Retourner en arrière&quot; routerlink=&quot;&sol;&quot; ng-reflect-router-link=&quot;&sol;&quot; href=&quot;&sol;&quot;&gt;
+                    &lt;app-arrow-left-icon&gt;
+                        &lt;svg fill=&quot;currentColor&quot; height=&quot;24&quot; viewBox=&quot;0 0 24 24&quot; width=&quot;24&quot; xmlns=&quot;http:&sol;&sol;www.w3.org&sol;2000&sol;svg&quot;&gt;
+                            &lt;path d=&quot;M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z&quot;&gt;&lt;&sol;path&gt;
+                        &lt;&sol;svg&gt;
+                    &lt;&sol;app-arrow-left-icon&gt;
+                &lt;&sol;a&gt;
+                &lt;p&gt;contact works&excl;&lt;&sol;p&gt;
+            &lt;&sol;app-contact&gt;
+            &lt;&excl;--container--&gt;
+            &lt;a _ngcontent-ng-c2412861752=&quot;&quot; routerlink=&quot;&sol;contact&quot; class=&quot;contact-link link-button&quot; ng-reflect-router-link=&quot;&sol;contact&quot; href=&quot;&sol;contact&quot;&gt; Nous contacter &lt;&sol;a&gt;
+        &lt;&sol;app-root&gt;
+        &lt;script src=&quot;polyfills.js&quot; type=&quot;module&quot;&gt;&lt;&sol;script&gt;
+        &lt;script src=&quot;main.js&quot; type=&quot;module&quot;&gt;&lt;&sol;script&gt;
+        &lt;link rel=&quot;modulepreload&quot; href=&quot;chunk-RN7QDPTX.js&quot; &sol;&gt;
+
+        &lt;script id=&quot;ng-state&quot; type=&quot;application&sol;json&quot;&gt;
+            &lcub; &quot;__nghData__&quot;: [] &rcub;
+        &lt;&sol;script&gt;
+    &lt;&sol;body&gt;
+&lt;&sol;html&gt;
+                          </code>
+                        </pre>
+                    </section>
+                </section>
+                <section>
+                    <section data-auto-animate>
+                        <h2>Take away 📪</h2>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Take away 📪</h2>
+                        <ul>
+                            <li>Easy to use</li>
+                        </ul>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Take away 📪</h2>
+                        <ul>
+                            <li>Easy to use</li>
+                            <li>Seamless integration</li>
+                        </ul>
+                    </section>
+                    <section data-auto-animate>
+                        <h2>Take away 📪</h2>
+                        <ul>
+                            <li>Easy to use</li>
+                            <li>Seamless integration</li>
+                            <li>Revert easily</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <h2>Thank you 🙏</h2>
+                    <p class="fragment fade-up">to you 🫵</p>
+                </section>
+            </div>
+        </div>
+        <script src="/scripts/reveal.js/reveal.js"></script>
+        <script src="/scripts/reveal.js/plugin/highlight/highlight.js"></script>
+        <script>
+            Reveal.initialize({
+                controls: true,
+                progress: false,
+                hash: true,
+                plugins: [RevealHighlight],
+            });
+        </script>
+    </body>
+</html>

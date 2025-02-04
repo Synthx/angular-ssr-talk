@@ -1,0 +1,2068 @@
+/*!
+* reveal.js 5.1.0
+* https://revealjs.com
+* MIT licensed
+*
+* Copyright (C) 2011-2024 Hakim El Hattab, https://hakim.se
+*/
+.reveal .r-stretch,
+.reveal .stretch {
+    max-width: none;
+    max-height: none;
+}
+.reveal pre.r-stretch code,
+.reveal pre.stretch code {
+    box-sizing: border-box;
+    height: 100%;
+    max-height: 100%;
+}
+.reveal .r-fit-text {
+    display: inline-block;
+    white-space: nowrap;
+}
+.reveal .r-stack {
+    display: grid;
+    grid-template-rows: 100%;
+}
+.reveal .r-stack > * {
+    grid-area: 1 / 1;
+    margin: auto;
+}
+.reveal .r-hstack,
+.reveal .r-vstack {
+    display: flex;
+}
+.reveal .r-hstack img,
+.reveal .r-hstack video,
+.reveal .r-vstack img,
+.reveal .r-vstack video {
+    min-width: 0;
+    min-height: 0;
+    object-fit: contain;
+}
+.reveal .r-vstack {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.reveal .r-hstack {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.reveal .items-stretch {
+    align-items: stretch;
+}
+.reveal .items-start {
+    align-items: flex-start;
+}
+.reveal .items-center {
+    align-items: center;
+}
+.reveal .items-end {
+    align-items: flex-end;
+}
+.reveal .justify-between {
+    justify-content: space-between;
+}
+.reveal .justify-around {
+    justify-content: space-around;
+}
+.reveal .justify-start {
+    justify-content: flex-start;
+}
+.reveal .justify-center {
+    justify-content: center;
+}
+.reveal .justify-end {
+    justify-content: flex-end;
+}
+html.reveal-full-page {
+    width: 100%;
+    height: 100%;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    height: 100svh;
+    overflow: hidden;
+}
+.reveal-viewport {
+    position: relative;
+    margin: 0;
+    background-color: #fff;
+    height: 100%;
+    overflow: hidden;
+    color: #000;
+    line-height: 1;
+    --r-controls-spacing: 12px;
+}
+.reveal-viewport:fullscreen {
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+.reveal .fragment {
+    transition: all 0.2s ease;
+}
+.reveal .fragment:not(.custom) {
+    visibility: hidden;
+    opacity: 0;
+    will-change: opacity;
+}
+.reveal .fragment.visible {
+    visibility: inherit;
+    opacity: 1;
+}
+.reveal .fragment.disabled {
+    transition: none;
+}
+.reveal .fragment.grow {
+    visibility: inherit;
+    opacity: 1;
+}
+.reveal .fragment.grow.visible {
+    transform: scale(1.3);
+}
+.reveal .fragment.shrink {
+    visibility: inherit;
+    opacity: 1;
+}
+.reveal .fragment.shrink.visible {
+    transform: scale(0.7);
+}
+.reveal .fragment.zoom-in {
+    transform: scale(0.1);
+}
+.reveal .fragment.zoom-in.visible {
+    transform: none;
+}
+.reveal .fragment.fade-out {
+    visibility: inherit;
+    opacity: 1;
+}
+.reveal .fragment.fade-out.visible {
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal .fragment.semi-fade-out {
+    visibility: inherit;
+    opacity: 1;
+}
+.reveal .fragment.semi-fade-out.visible {
+    visibility: inherit;
+    opacity: 0.5;
+}
+.reveal .fragment.strike {
+    visibility: inherit;
+    opacity: 1;
+}
+.reveal .fragment.strike.visible {
+    text-decoration: line-through;
+}
+.reveal .fragment.fade-up {
+    transform: translate(0, 40px);
+}
+.reveal .fragment.fade-up.visible {
+    transform: translate(0, 0);
+}
+.reveal .fragment.fade-down {
+    transform: translate(0, -40px);
+}
+.reveal .fragment.fade-down.visible {
+    transform: translate(0, 0);
+}
+.reveal .fragment.fade-right {
+    transform: translate(-40px, 0);
+}
+.reveal .fragment.fade-right.visible {
+    transform: translate(0, 0);
+}
+.reveal .fragment.fade-left {
+    transform: translate(40px, 0);
+}
+.reveal .fragment.fade-left.visible {
+    transform: translate(0, 0);
+}
+.reveal .fragment.current-visible,
+.reveal .fragment.fade-in-then-out {
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal .fragment.current-visible.current-fragment,
+.reveal .fragment.fade-in-then-out.current-fragment {
+    visibility: inherit;
+    opacity: 1;
+}
+.reveal .fragment.fade-in-then-semi-out {
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal .fragment.fade-in-then-semi-out.visible {
+    visibility: inherit;
+    opacity: 0.5;
+}
+.reveal .fragment.fade-in-then-semi-out.current-fragment {
+    visibility: inherit;
+    opacity: 1;
+}
+.reveal .fragment.highlight-blue,
+.reveal .fragment.highlight-current-blue,
+.reveal .fragment.highlight-current-green,
+.reveal .fragment.highlight-current-red,
+.reveal .fragment.highlight-green,
+.reveal .fragment.highlight-red {
+    visibility: inherit;
+    opacity: 1;
+}
+.reveal .fragment.highlight-red.visible {
+    color: #ff2c2d;
+}
+.reveal .fragment.highlight-green.visible {
+    color: #17ff2e;
+}
+.reveal .fragment.highlight-blue.visible {
+    color: #1b91ff;
+}
+.reveal .fragment.highlight-current-red.current-fragment {
+    color: #ff2c2d;
+}
+.reveal .fragment.highlight-current-green.current-fragment {
+    color: #17ff2e;
+}
+.reveal .fragment.highlight-current-blue.current-fragment {
+    color: #1b91ff;
+}
+.reveal:after {
+    content: '';
+    font-style: italic;
+}
+.reveal iframe {
+    z-index: 1;
+}
+.reveal a {
+    position: relative;
+}
+@keyframes bounce-right {
+    0%,
+    10%,
+    25%,
+    40%,
+    50% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(10px);
+    }
+    30% {
+        transform: translateX(-5px);
+    }
+}
+@keyframes bounce-left {
+    0%,
+    10%,
+    25%,
+    40%,
+    50% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-10px);
+    }
+    30% {
+        transform: translateX(5px);
+    }
+}
+@keyframes bounce-down {
+    0%,
+    10%,
+    25%,
+    40%,
+    50% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(10px);
+    }
+    30% {
+        transform: translateY(-5px);
+    }
+}
+.reveal .controls {
+    display: none;
+    position: absolute;
+    top: auto;
+    right: var(--r-controls-spacing);
+    bottom: var(--r-controls-spacing);
+    left: auto;
+    z-index: 11;
+    pointer-events: none;
+    color: #000;
+    font-size: 10px;
+}
+.reveal .controls button {
+    position: absolute;
+    transform: scale(0.9999);
+    -webkit-appearance: none;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 2;
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+    pointer-events: auto;
+    color: currentColor;
+    font-size: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+.reveal .controls .controls-arrow:after,
+.reveal .controls .controls-arrow:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0.2em 50%;
+    transition:
+        all 0.15s ease,
+        background-color 0.8s ease;
+    will-change: transform;
+    border-radius: 0.25em;
+    background-color: currentColor;
+    width: 2.6em;
+    height: 0.5em;
+    content: '';
+}
+.reveal .controls .controls-arrow {
+    position: relative;
+    width: 3.6em;
+    height: 3.6em;
+}
+.reveal .controls .controls-arrow:before {
+    transform: translateX(0.5em) translateY(1.55em) rotate(45deg);
+}
+.reveal .controls .controls-arrow:after {
+    transform: translateX(0.5em) translateY(1.55em) rotate(-45deg);
+}
+.reveal .controls .controls-arrow:hover:before {
+    transform: translateX(0.5em) translateY(1.55em) rotate(40deg);
+}
+.reveal .controls .controls-arrow:hover:after {
+    transform: translateX(0.5em) translateY(1.55em) rotate(-40deg);
+}
+.reveal .controls .controls-arrow:active:before {
+    transform: translateX(0.5em) translateY(1.55em) rotate(36deg);
+}
+.reveal .controls .controls-arrow:active:after {
+    transform: translateX(0.5em) translateY(1.55em) rotate(-36deg);
+}
+.reveal .controls .navigate-left {
+    right: 6.4em;
+    bottom: 3.2em;
+    transform: translateX(-10px);
+}
+.reveal .controls .navigate-left.highlight {
+    animation: bounce-left 2s 50 both ease-out;
+}
+.reveal .controls .navigate-right {
+    right: 0;
+    bottom: 3.2em;
+    transform: translateX(10px);
+}
+.reveal .controls .navigate-right .controls-arrow {
+    transform: rotate(180deg);
+}
+.reveal .controls .navigate-right.highlight {
+    animation: bounce-right 2s 50 both ease-out;
+}
+.reveal .controls .navigate-up {
+    right: 3.2em;
+    bottom: 6.4em;
+    transform: translateY(-10px);
+}
+.reveal .controls .navigate-up .controls-arrow {
+    transform: rotate(90deg);
+}
+.reveal .controls .navigate-down {
+    right: 3.2em;
+    bottom: -1.4em;
+    transform: translateY(10px);
+    padding-bottom: 1.4em;
+}
+.reveal .controls .navigate-down .controls-arrow {
+    transform: rotate(-90deg);
+}
+.reveal .controls .navigate-down.highlight {
+    animation: bounce-down 2s 50 both ease-out;
+}
+.reveal .controls[data-controls-back-arrows='faded'] .navigate-up.enabled {
+    opacity: 0.3;
+}
+.reveal .controls[data-controls-back-arrows='faded'] .navigate-up.enabled:hover {
+    opacity: 1;
+}
+.reveal .controls[data-controls-back-arrows='hidden'] .navigate-up.enabled {
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal .controls .enabled {
+    transform: none;
+    visibility: visible;
+    opacity: 0.9;
+    cursor: pointer;
+}
+.reveal .controls .enabled.fragmented {
+    opacity: 0.5;
+}
+.reveal .controls .enabled.fragmented:hover,
+.reveal .controls .enabled:hover {
+    opacity: 1;
+}
+.reveal:not(.rtl) .controls[data-controls-back-arrows='faded'] .navigate-left.enabled {
+    opacity: 0.3;
+}
+.reveal:not(.rtl) .controls[data-controls-back-arrows='faded'] .navigate-left.enabled:hover {
+    opacity: 1;
+}
+.reveal:not(.rtl) .controls[data-controls-back-arrows='hidden'] .navigate-left.enabled {
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal.rtl .controls[data-controls-back-arrows='faded'] .navigate-right.enabled {
+    opacity: 0.3;
+}
+.reveal.rtl .controls[data-controls-back-arrows='faded'] .navigate-right.enabled:hover {
+    opacity: 1;
+}
+.reveal.rtl .controls[data-controls-back-arrows='hidden'] .navigate-right.enabled {
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal[data-navigation-mode='linear'].has-horizontal-slides .navigate-down,
+.reveal[data-navigation-mode='linear'].has-horizontal-slides .navigate-up {
+    display: none;
+}
+.reveal:not(.has-vertical-slides) .controls .navigate-left,
+.reveal[data-navigation-mode='linear'].has-horizontal-slides .navigate-left {
+    right: 5.5em;
+    bottom: 1.4em;
+}
+.reveal:not(.has-vertical-slides) .controls .navigate-right,
+.reveal[data-navigation-mode='linear'].has-horizontal-slides .navigate-right {
+    right: 0.5em;
+    bottom: 1.4em;
+}
+.reveal:not(.has-horizontal-slides) .controls .navigate-up {
+    right: 1.4em;
+    bottom: 5em;
+}
+.reveal:not(.has-horizontal-slides) .controls .navigate-down {
+    right: 1.4em;
+    bottom: 0.5em;
+}
+.reveal.has-dark-background .controls {
+    color: #fff;
+}
+.reveal.has-light-background .controls {
+    color: #000;
+}
+.reveal.no-hover .controls .controls-arrow:active:before,
+.reveal.no-hover .controls .controls-arrow:hover:before {
+    transform: translateX(0.5em) translateY(1.55em) rotate(45deg);
+}
+.reveal.no-hover .controls .controls-arrow:active:after,
+.reveal.no-hover .controls .controls-arrow:hover:after {
+    transform: translateX(0.5em) translateY(1.55em) rotate(-45deg);
+}
+@media screen and (min-width: 500px) {
+    .reveal-viewport {
+        --r-controls-spacing: 0.8em;
+    }
+    .reveal .controls[data-controls-layout='edges'] {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .reveal .controls[data-controls-layout='edges'] .navigate-down,
+    .reveal .controls[data-controls-layout='edges'] .navigate-left,
+    .reveal .controls[data-controls-layout='edges'] .navigate-right,
+    .reveal .controls[data-controls-layout='edges'] .navigate-up {
+        right: auto;
+        bottom: auto;
+    }
+    .reveal .controls[data-controls-layout='edges'] .navigate-left {
+        top: 50%;
+        left: var(--r-controls-spacing);
+        margin-top: -1.8em;
+    }
+    .reveal .controls[data-controls-layout='edges'] .navigate-right {
+        top: 50%;
+        right: var(--r-controls-spacing);
+        margin-top: -1.8em;
+    }
+    .reveal .controls[data-controls-layout='edges'] .navigate-up {
+        top: var(--r-controls-spacing);
+        left: 50%;
+        margin-left: -1.8em;
+    }
+    .reveal .controls[data-controls-layout='edges'] .navigate-down {
+        bottom: calc(var(--r-controls-spacing) - 1.4em + 0.3em);
+        left: 50%;
+        margin-left: -1.8em;
+    }
+}
+.reveal .progress {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 3px;
+    color: #fff;
+}
+.reveal .progress:after {
+    display: block;
+    position: absolute;
+    top: -10px;
+    width: 100%;
+    height: 10px;
+    content: '';
+}
+.reveal .progress span {
+    display: block;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: transform 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985);
+    background-color: currentColor;
+    width: 100%;
+    height: 100%;
+}
+.reveal .slide-number {
+    display: block;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    z-index: 31;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 5px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+    font-family: Helvetica, sans-serif;
+}
+.reveal .slide-number a {
+    color: currentColor;
+}
+.reveal .slide-number-delimiter {
+    margin: 0 3px;
+}
+.reveal {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    touch-action: pinch-zoom;
+}
+.reveal.embedded {
+    touch-action: pan-y;
+}
+.reveal.embedded.is-vertical-slide {
+    touch-action: none;
+}
+.reveal .slides {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    perspective: 600px;
+    perspective-origin: 50% 40%;
+    z-index: 1;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    text-align: center;
+}
+.reveal .slides > section {
+    perspective: 600px;
+}
+.reveal .slides > section,
+.reveal .slides > section > section {
+    display: none;
+    position: absolute;
+    transform-style: flat;
+    z-index: 10;
+    transition:
+        transform-origin 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985),
+        transform 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985),
+        visibility 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985),
+        opacity 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985);
+    width: 100%;
+    pointer-events: auto;
+}
+.reveal[data-transition-speed='fast'] .slides section {
+    transition-duration: 0.4s;
+}
+.reveal[data-transition-speed='slow'] .slides section {
+    transition-duration: 1.2s;
+}
+.reveal .slides section[data-transition-speed='fast'] {
+    transition-duration: 0.4s;
+}
+.reveal .slides section[data-transition-speed='slow'] {
+    transition-duration: 1.2s;
+}
+.reveal .slides > section.stack {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 100%;
+    pointer-events: none;
+}
+.reveal .slides > section.present,
+.reveal .slides > section > section.present {
+    display: block;
+    opacity: 1;
+    z-index: 11;
+}
+.reveal .slides > section:empty,
+.reveal .slides > section > section:empty,
+.reveal .slides > section > section[data-background-interactive],
+.reveal .slides > section[data-background-interactive] {
+    pointer-events: none;
+}
+.reveal.center,
+.reveal.center .slides,
+.reveal.center .slides section {
+    min-height: 0 !important;
+}
+.reveal .slides > section:not(.present),
+.reveal .slides > section > section:not(.present) {
+    pointer-events: none;
+}
+.reveal.overview .slides > section,
+.reveal.overview .slides > section > section {
+    pointer-events: auto;
+}
+.reveal .slides > section.future,
+.reveal .slides > section.future > section,
+.reveal .slides > section.past,
+.reveal .slides > section.past > section,
+.reveal .slides > section > section.future,
+.reveal .slides > section > section.past {
+    opacity: 0;
+}
+.reveal .slides > section[data-transition='slide'].past,
+.reveal .slides > section[data-transition~='slide-out'].past,
+.reveal.slide .slides > section:not([data-transition]).past {
+    transform: translate(-150%, 0);
+}
+.reveal .slides > section[data-transition='slide'].future,
+.reveal .slides > section[data-transition~='slide-in'].future,
+.reveal.slide .slides > section:not([data-transition]).future {
+    transform: translate(150%, 0);
+}
+.reveal .slides > section > section[data-transition='slide'].past,
+.reveal .slides > section > section[data-transition~='slide-out'].past,
+.reveal.slide .slides > section > section:not([data-transition]).past {
+    transform: translate(0, -150%);
+}
+.reveal .slides > section > section[data-transition='slide'].future,
+.reveal .slides > section > section[data-transition~='slide-in'].future,
+.reveal.slide .slides > section > section:not([data-transition]).future {
+    transform: translate(0, 150%);
+}
+.reveal .slides > section[data-transition='linear'].past,
+.reveal .slides > section[data-transition~='linear-out'].past,
+.reveal.linear .slides > section:not([data-transition]).past {
+    transform: translate(-150%, 0);
+}
+.reveal .slides > section[data-transition='linear'].future,
+.reveal .slides > section[data-transition~='linear-in'].future,
+.reveal.linear .slides > section:not([data-transition]).future {
+    transform: translate(150%, 0);
+}
+.reveal .slides > section > section[data-transition='linear'].past,
+.reveal .slides > section > section[data-transition~='linear-out'].past,
+.reveal.linear .slides > section > section:not([data-transition]).past {
+    transform: translate(0, -150%);
+}
+.reveal .slides > section > section[data-transition='linear'].future,
+.reveal .slides > section > section[data-transition~='linear-in'].future,
+.reveal.linear .slides > section > section:not([data-transition]).future {
+    transform: translate(0, 150%);
+}
+.reveal .slides section[data-transition='default'].stack,
+.reveal.default .slides section.stack {
+    transform-style: preserve-3d;
+}
+.reveal .slides > section[data-transition='default'].past,
+.reveal .slides > section[data-transition~='default-out'].past,
+.reveal.default .slides > section:not([data-transition]).past {
+    transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);
+}
+.reveal .slides > section[data-transition='default'].future,
+.reveal .slides > section[data-transition~='default-in'].future,
+.reveal.default .slides > section:not([data-transition]).future {
+    transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
+}
+.reveal .slides > section > section[data-transition='default'].past,
+.reveal .slides > section > section[data-transition~='default-out'].past,
+.reveal.default .slides > section > section:not([data-transition]).past {
+    transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);
+}
+.reveal .slides > section > section[data-transition='default'].future,
+.reveal .slides > section > section[data-transition~='default-in'].future,
+.reveal.default .slides > section > section:not([data-transition]).future {
+    transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);
+}
+.reveal .slides section[data-transition='convex'].stack,
+.reveal.convex .slides section.stack {
+    transform-style: preserve-3d;
+}
+.reveal .slides > section[data-transition='convex'].past,
+.reveal .slides > section[data-transition~='convex-out'].past,
+.reveal.convex .slides > section:not([data-transition]).past {
+    transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);
+}
+.reveal .slides > section[data-transition='convex'].future,
+.reveal .slides > section[data-transition~='convex-in'].future,
+.reveal.convex .slides > section:not([data-transition]).future {
+    transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
+}
+.reveal .slides > section > section[data-transition='convex'].past,
+.reveal .slides > section > section[data-transition~='convex-out'].past,
+.reveal.convex .slides > section > section:not([data-transition]).past {
+    transform: translate3d(0, -300px, 0) rotateX(70deg) translate3d(0, -300px, 0);
+}
+.reveal .slides > section > section[data-transition='convex'].future,
+.reveal .slides > section > section[data-transition~='convex-in'].future,
+.reveal.convex .slides > section > section:not([data-transition]).future {
+    transform: translate3d(0, 300px, 0) rotateX(-70deg) translate3d(0, 300px, 0);
+}
+.reveal .slides section[data-transition='concave'].stack,
+.reveal.concave .slides section.stack {
+    transform-style: preserve-3d;
+}
+.reveal .slides > section[data-transition='concave'].past,
+.reveal .slides > section[data-transition~='concave-out'].past,
+.reveal.concave .slides > section:not([data-transition]).past {
+    transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);
+}
+.reveal .slides > section[data-transition='concave'].future,
+.reveal .slides > section[data-transition~='concave-in'].future,
+.reveal.concave .slides > section:not([data-transition]).future {
+    transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);
+}
+.reveal .slides > section > section[data-transition='concave'].past,
+.reveal .slides > section > section[data-transition~='concave-out'].past,
+.reveal.concave .slides > section > section:not([data-transition]).past {
+    transform: translate3d(0, -80%, 0) rotateX(-70deg) translate3d(0, -80%, 0);
+}
+.reveal .slides > section > section[data-transition='concave'].future,
+.reveal .slides > section > section[data-transition~='concave-in'].future,
+.reveal.concave .slides > section > section:not([data-transition]).future {
+    transform: translate3d(0, 80%, 0) rotateX(70deg) translate3d(0, 80%, 0);
+}
+.reveal .slides section[data-transition='zoom'],
+.reveal.zoom .slides section:not([data-transition]) {
+    transition-timing-function: ease;
+}
+.reveal .slides > section[data-transition='zoom'].past,
+.reveal .slides > section[data-transition~='zoom-out'].past,
+.reveal.zoom .slides > section:not([data-transition]).past {
+    transform: scale(16);
+    visibility: hidden;
+}
+.reveal .slides > section[data-transition='zoom'].future,
+.reveal .slides > section[data-transition~='zoom-in'].future,
+.reveal.zoom .slides > section:not([data-transition]).future {
+    transform: scale(0.2);
+    visibility: hidden;
+}
+.reveal .slides > section > section[data-transition='zoom'].past,
+.reveal .slides > section > section[data-transition~='zoom-out'].past,
+.reveal.zoom .slides > section > section:not([data-transition]).past {
+    transform: scale(16);
+}
+.reveal .slides > section > section[data-transition='zoom'].future,
+.reveal .slides > section > section[data-transition~='zoom-in'].future,
+.reveal.zoom .slides > section > section:not([data-transition]).future {
+    transform: scale(0.2);
+}
+.reveal.cube .slides {
+    perspective: 1300px;
+}
+.reveal.cube .slides section {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    padding: 30px;
+    min-height: 700px;
+}
+.reveal.center.cube .slides section {
+    min-height: 0;
+}
+.reveal.cube .slides section:not(.stack):before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateZ(-20px);
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    content: '';
+}
+.reveal.cube .slides section:not(.stack):after {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    transform: translateZ(-90px) rotateX(65deg);
+    z-index: 1;
+    box-shadow: 0 95px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background: 0 0;
+    width: 90%;
+    height: 30px;
+    content: '';
+}
+.reveal.cube .slides > section.stack {
+    background: 0 0;
+    padding: 0;
+}
+.reveal.cube .slides > section.past {
+    transform: translate3d(-100%, 0, 0) rotateY(-90deg);
+    transform-origin: 100% 0;
+}
+.reveal.cube .slides > section.future {
+    transform: translate3d(100%, 0, 0) rotateY(90deg);
+    transform-origin: 0 0;
+}
+.reveal.cube .slides > section > section.past {
+    transform: translate3d(0, -100%, 0) rotateX(90deg);
+    transform-origin: 0 100%;
+}
+.reveal.cube .slides > section > section.future {
+    transform: translate3d(0, 100%, 0) rotateX(-90deg);
+    transform-origin: 0 0;
+}
+.reveal.page .slides {
+    perspective: 3000px;
+    perspective-origin: 0 50%;
+}
+.reveal.page .slides section {
+    transform-style: preserve-3d;
+    box-sizing: border-box;
+    padding: 30px;
+    min-height: 700px;
+}
+.reveal.page .slides section.past {
+    z-index: 12;
+}
+.reveal.page .slides section:not(.stack):before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateZ(-20px);
+    background: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    content: '';
+}
+.reveal.page .slides section:not(.stack):after {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    -webkit-transform: translateZ(-90px) rotateX(65deg);
+    z-index: 1;
+    box-shadow: 0 95px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background: 0 0;
+    width: 90%;
+    height: 30px;
+    content: '';
+}
+.reveal.page .slides > section.stack {
+    background: 0 0;
+    padding: 0;
+}
+.reveal.page .slides > section.past {
+    transform: translate3d(-40%, 0, 0) rotateY(-80deg);
+    transform-origin: 0 0;
+}
+.reveal.page .slides > section.future {
+    transform: translate3d(0, 0, 0);
+    transform-origin: 100% 0;
+}
+.reveal.page .slides > section > section.past {
+    transform: translate3d(0, -40%, 0) rotateX(80deg);
+    transform-origin: 0 0;
+}
+.reveal.page .slides > section > section.future {
+    transform: translate3d(0, 0, 0);
+    transform-origin: 0 100%;
+}
+.reveal .slides section[data-transition='fade'],
+.reveal.fade .slides section:not([data-transition]),
+.reveal.fade .slides > section > section:not([data-transition]) {
+    transform: none;
+    transition: opacity 0.5s;
+}
+.reveal.fade.overview .slides section,
+.reveal.fade.overview .slides > section > section {
+    transition: none;
+}
+.reveal .slides section[data-transition='none'],
+.reveal.none .slides section:not([data-transition]) {
+    transform: none;
+    transition: none;
+}
+.reveal .pause-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 100;
+    transition: all 1s ease;
+    background: #000;
+    width: 100%;
+    height: 100%;
+}
+.reveal .pause-overlay .resume-button {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    border-radius: 2px;
+    background: 0 0;
+    padding: 6px 14px;
+    color: #ccc;
+    font-size: 16px;
+}
+.reveal .pause-overlay .resume-button:hover {
+    border-color: #fff;
+    color: #fff;
+}
+.reveal.paused .pause-overlay {
+    visibility: visible;
+    opacity: 1;
+}
+.reveal .no-transition,
+.reveal .no-transition *,
+.reveal .slides.disable-slide-transitions section {
+    transition: none !important;
+}
+.reveal .slides.disable-slide-transitions section {
+    transform: none !important;
+}
+.reveal .backgrounds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    perspective: 600px;
+    width: 100%;
+    height: 100%;
+}
+.reveal .slide-background {
+    display: none;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.26, 0.86, 0.44, 0.985);
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.reveal .slide-background-content {
+    position: absolute;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+.reveal .slide-background.stack {
+    display: block;
+}
+.reveal .slide-background.present {
+    visibility: visible;
+    opacity: 1;
+    z-index: 2;
+}
+.print-pdf .reveal .slide-background {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+.reveal .slide-background video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    max-height: none;
+    object-fit: cover;
+}
+.reveal .slide-background[data-background-size='contain'] video {
+    object-fit: contain;
+}
+.reveal > .backgrounds .slide-background[data-background-transition='none'],
+.reveal[data-background-transition='none'] > .backgrounds .slide-background:not([data-background-transition]) {
+    transition: none;
+}
+.reveal > .backgrounds .slide-background[data-background-transition='slide'],
+.reveal[data-background-transition='slide'] > .backgrounds .slide-background:not([data-background-transition]) {
+    opacity: 1;
+}
+.reveal > .backgrounds .slide-background.past[data-background-transition='slide'],
+.reveal[data-background-transition='slide'] > .backgrounds .slide-background.past:not([data-background-transition]) {
+    transform: translate(-100%, 0);
+}
+.reveal > .backgrounds .slide-background.future[data-background-transition='slide'],
+.reveal[data-background-transition='slide'] > .backgrounds .slide-background.future:not([data-background-transition]) {
+    transform: translate(100%, 0);
+}
+.reveal > .backgrounds .slide-background > .slide-background.past[data-background-transition='slide'],
+.reveal[data-background-transition='slide']
+    > .backgrounds
+    .slide-background
+    > .slide-background.past:not([data-background-transition]) {
+    transform: translate(0, -100%);
+}
+.reveal > .backgrounds .slide-background > .slide-background.future[data-background-transition='slide'],
+.reveal[data-background-transition='slide']
+    > .backgrounds
+    .slide-background
+    > .slide-background.future:not([data-background-transition]) {
+    transform: translate(0, 100%);
+}
+.reveal > .backgrounds .slide-background.past[data-background-transition='convex'],
+.reveal[data-background-transition='convex'] > .backgrounds .slide-background.past:not([data-background-transition]) {
+    transform: translate3d(-100%, 0, 0) rotateY(-90deg) translate3d(-100%, 0, 0);
+    opacity: 0;
+}
+.reveal > .backgrounds .slide-background.future[data-background-transition='convex'],
+.reveal[data-background-transition='convex'] > .backgrounds .slide-background.future:not([data-background-transition]) {
+    transform: translate3d(100%, 0, 0) rotateY(90deg) translate3d(100%, 0, 0);
+    opacity: 0;
+}
+.reveal > .backgrounds .slide-background > .slide-background.past[data-background-transition='convex'],
+.reveal[data-background-transition='convex']
+    > .backgrounds
+    .slide-background
+    > .slide-background.past:not([data-background-transition]) {
+    transform: translate3d(0, -100%, 0) rotateX(90deg) translate3d(0, -100%, 0);
+    opacity: 0;
+}
+.reveal > .backgrounds .slide-background > .slide-background.future[data-background-transition='convex'],
+.reveal[data-background-transition='convex']
+    > .backgrounds
+    .slide-background
+    > .slide-background.future:not([data-background-transition]) {
+    transform: translate3d(0, 100%, 0) rotateX(-90deg) translate3d(0, 100%, 0);
+    opacity: 0;
+}
+.reveal > .backgrounds .slide-background.past[data-background-transition='concave'],
+.reveal[data-background-transition='concave'] > .backgrounds .slide-background.past:not([data-background-transition]) {
+    transform: translate3d(-100%, 0, 0) rotateY(90deg) translate3d(-100%, 0, 0);
+    opacity: 0;
+}
+.reveal > .backgrounds .slide-background.future[data-background-transition='concave'],
+.reveal[data-background-transition='concave']
+    > .backgrounds
+    .slide-background.future:not([data-background-transition]) {
+    transform: translate3d(100%, 0, 0) rotateY(-90deg) translate3d(100%, 0, 0);
+    opacity: 0;
+}
+.reveal > .backgrounds .slide-background > .slide-background.past[data-background-transition='concave'],
+.reveal[data-background-transition='concave']
+    > .backgrounds
+    .slide-background
+    > .slide-background.past:not([data-background-transition]) {
+    transform: translate3d(0, -100%, 0) rotateX(-90deg) translate3d(0, -100%, 0);
+    opacity: 0;
+}
+.reveal > .backgrounds .slide-background > .slide-background.future[data-background-transition='concave'],
+.reveal[data-background-transition='concave']
+    > .backgrounds
+    .slide-background
+    > .slide-background.future:not([data-background-transition]) {
+    transform: translate3d(0, 100%, 0) rotateX(90deg) translate3d(0, 100%, 0);
+    opacity: 0;
+}
+.reveal > .backgrounds .slide-background[data-background-transition='zoom'],
+.reveal[data-background-transition='zoom'] > .backgrounds .slide-background:not([data-background-transition]) {
+    transition-timing-function: ease;
+}
+.reveal > .backgrounds .slide-background.past[data-background-transition='zoom'],
+.reveal[data-background-transition='zoom'] > .backgrounds .slide-background.past:not([data-background-transition]) {
+    transform: scale(16);
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal > .backgrounds .slide-background.future[data-background-transition='zoom'],
+.reveal[data-background-transition='zoom'] > .backgrounds .slide-background.future:not([data-background-transition]) {
+    transform: scale(0.2);
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal > .backgrounds .slide-background > .slide-background.past[data-background-transition='zoom'],
+.reveal[data-background-transition='zoom']
+    > .backgrounds
+    .slide-background
+    > .slide-background.past:not([data-background-transition]) {
+    transform: scale(16);
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal > .backgrounds .slide-background > .slide-background.future[data-background-transition='zoom'],
+.reveal[data-background-transition='zoom']
+    > .backgrounds
+    .slide-background
+    > .slide-background.future:not([data-background-transition]) {
+    transform: scale(0.2);
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal[data-transition-speed='fast'] > .backgrounds .slide-background {
+    transition-duration: 0.4s;
+}
+.reveal[data-transition-speed='slow'] > .backgrounds .slide-background {
+    transition-duration: 1.2s;
+}
+.reveal [data-auto-animate-target^='unmatched'] {
+    will-change: opacity;
+}
+.reveal
+    section[data-auto-animate]:not(.stack):not([data-auto-animate='running'])
+    [data-auto-animate-target^='unmatched'] {
+    opacity: 0;
+}
+.reveal.overview {
+    perspective: 700px;
+    perspective-origin: 50% 50%;
+}
+.reveal.overview .slides {
+    -moz-transform-style: preserve-3d;
+}
+.reveal.overview .slides section {
+    top: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+}
+.reveal.overview .slides section.present,
+.reveal.overview .slides section:hover {
+    outline: 10px solid rgba(150, 150, 150, 0.4);
+    outline-offset: 10px;
+}
+.reveal.overview .slides section .fragment {
+    opacity: 1;
+    transition: none;
+}
+.reveal.overview .slides section:after,
+.reveal.overview .slides section:before {
+    display: none !important;
+}
+.reveal.overview .slides > section.stack {
+    top: 0 !important;
+    outline: 0;
+    background: 0 0;
+    padding: 0;
+    overflow: visible;
+}
+.reveal.overview .backgrounds {
+    -moz-transform-style: preserve-3d;
+    perspective: inherit;
+}
+.reveal.overview .backgrounds .slide-background {
+    visibility: visible;
+    opacity: 1;
+    outline: 10px solid rgba(150, 150, 150, 0.1);
+    outline-offset: 10px;
+}
+.reveal.overview .backgrounds .slide-background.stack {
+    overflow: visible;
+}
+.reveal.overview .slides section,
+.reveal.overview-deactivating .slides section {
+    transition: none;
+}
+.reveal.overview .backgrounds .slide-background,
+.reveal.overview-deactivating .backgrounds .slide-background {
+    transition: none;
+}
+.reveal.rtl .slides,
+.reveal.rtl .slides h1,
+.reveal.rtl .slides h2,
+.reveal.rtl .slides h3,
+.reveal.rtl .slides h4,
+.reveal.rtl .slides h5,
+.reveal.rtl .slides h6 {
+    font-family: sans-serif;
+    direction: rtl;
+}
+.reveal.rtl code,
+.reveal.rtl pre {
+    direction: ltr;
+}
+.reveal.rtl ol,
+.reveal.rtl ul {
+    text-align: right;
+}
+.reveal.rtl .progress span {
+    transform-origin: 100% 0;
+}
+.reveal.has-parallax-background .backgrounds {
+    transition: all 0.8s ease;
+}
+.reveal.has-parallax-background[data-transition-speed='fast'] .backgrounds {
+    transition-duration: 0.4s;
+}
+.reveal.has-parallax-background[data-transition-speed='slow'] .backgrounds {
+    transition-duration: 1.2s;
+}
+.reveal > .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.95);
+    width: 100%;
+    height: 100%;
+}
+.reveal > .overlay .spinner {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    visibility: visible;
+    opacity: 0.6;
+    z-index: 10;
+    transition: all 0.3s ease;
+    margin: -16px 0 0 -16px;
+    background-image: url(data:image/gif;base64,R0lGODlhIAAgAPMAAJmZmf%2F%2F%2F6%2Bvr8nJybW1tcDAwOjo6Nvb26ioqKOjo7Ozs%2FLy8vz8%2FAAAAAAAAAAAACH%2FC05FVFNDQVBFMi4wAwEAAAAh%2FhpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh%2BQQJCgAAACwAAAAAIAAgAAAE5xDISWlhperN52JLhSSdRgwVo1ICQZRUsiwHpTJT4iowNS8vyW2icCF6k8HMMBkCEDskxTBDAZwuAkkqIfxIQyhBQBFvAQSDITM5VDW6XNE4KagNh6Bgwe60smQUB3d4Rz1ZBApnFASDd0hihh12BkE9kjAJVlycXIg7CQIFA6SlnJ87paqbSKiKoqusnbMdmDC2tXQlkUhziYtyWTxIfy6BE8WJt5YJvpJivxNaGmLHT0VnOgSYf0dZXS7APdpB309RnHOG5gDqXGLDaC457D1zZ%2FV%2FnmOM82XiHRLYKhKP1oZmADdEAAAh%2BQQJCgAAACwAAAAAIAAgAAAE6hDISWlZpOrNp1lGNRSdRpDUolIGw5RUYhhHukqFu8DsrEyqnWThGvAmhVlteBvojpTDDBUEIFwMFBRAmBkSgOrBFZogCASwBDEY%2FCZSg7GSE0gSCjQBMVG023xWBhklAnoEdhQEfyNqMIcKjhRsjEdnezB%2BA4k8gTwJhFuiW4dokXiloUepBAp5qaKpp6%2BHo7aWW54wl7obvEe0kRuoplCGepwSx2jJvqHEmGt6whJpGpfJCHmOoNHKaHx61WiSR92E4lbFoq%2BB6QDtuetcaBPnW6%2BO7wDHpIiK9SaVK5GgV543tzjgGcghAgAh%2BQQJCgAAACwAAAAAIAAgAAAE7hDISSkxpOrN5zFHNWRdhSiVoVLHspRUMoyUakyEe8PTPCATW9A14E0UvuAKMNAZKYUZCiBMuBakSQKG8G2FzUWox2AUtAQFcBKlVQoLgQReZhQlCIJesQXI5B0CBnUMOxMCenoCfTCEWBsJColTMANldx15BGs8B5wlCZ9Po6OJkwmRpnqkqnuSrayqfKmqpLajoiW5HJq7FL1Gr2mMMcKUMIiJgIemy7xZtJsTmsM4xHiKv5KMCXqfyUCJEonXPN2rAOIAmsfB3uPoAK%2B%2BG%2Bw48edZPK%2BM6hLJpQg484enXIdQFSS1u6UhksENEQAAIfkECQoAAAAsAAAAACAAIAAABOcQyEmpGKLqzWcZRVUQnZYg1aBSh2GUVEIQ2aQOE%2BG%2BcD4ntpWkZQj1JIiZIogDFFyHI0UxQwFugMSOFIPJftfVAEoZLBbcLEFhlQiqGp1Vd140AUklUN3eCA51C1EWMzMCezCBBmkxVIVHBWd3HHl9JQOIJSdSnJ0TDKChCwUJjoWMPaGqDKannasMo6WnM562R5YluZRwur0wpgqZE7NKUm%2BFNRPIhjBJxKZteWuIBMN4zRMIVIhffcgojwCF117i4nlLnY5ztRLsnOk%2BaV%2BoJY7V7m76PdkS4trKcdg0Zc0tTcKkRAAAIfkECQoAAAAsAAAAACAAIAAABO4QyEkpKqjqzScpRaVkXZWQEximw1BSCUEIlDohrft6cpKCk5xid5MNJTaAIkekKGQkWyKHkvhKsR7ARmitkAYDYRIbUQRQjWBwJRzChi9CRlBcY1UN4g0%2FVNB0AlcvcAYHRyZPdEQFYV8ccwR5HWxEJ02YmRMLnJ1xCYp0Y5idpQuhopmmC2KgojKasUQDk5BNAwwMOh2RtRq5uQuPZKGIJQIGwAwGf6I0JXMpC8C7kXWDBINFMxS4DKMAWVWAGYsAdNqW5uaRxkSKJOZKaU3tPOBZ4DuK2LATgJhkPJMgTwKCdFjyPHEnKxFCDhEAACH5BAkKAAAALAAAAAAgACAAAATzEMhJaVKp6s2nIkolIJ2WkBShpkVRWqqQrhLSEu9MZJKK9y1ZrqYK9WiClmvoUaF8gIQSNeF1Er4MNFn4SRSDARWroAIETg1iVwuHjYB1kYc1mwruwXKC9gmsJXliGxc%2BXiUCby9ydh1sOSdMkpMTBpaXBzsfhoc5l58Gm5yToAaZhaOUqjkDgCWNHAULCwOLaTmzswadEqggQwgHuQsHIoZCHQMMQgQGubVEcxOPFAcMDAYUA85eWARmfSRQCdcMe0zeP1AAygwLlJtPNAAL19DARdPzBOWSm1brJBi45soRAWQAAkrQIykShQ9wVhHCwCQCACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiRMDjI0Fd30%2FiI2UA5GSS5UDj2l6NoqgOgN4gksEBgYFf0FDqKgHnyZ9OX8HrgYHdHpcHQULXAS2qKpENRg7eAMLC7kTBaixUYFkKAzWAAnLC7FLVxLWDBLKCwaKTULgEwbLA4hJtOkSBNqITT3xEgfLpBtzE%2FjiuL04RGEBgwWhShRgQExHBAAh%2BQQJCgAAACwAAAAAIAAgAAAE7xDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfZiCqGk5dTESJeaOAlClzsJsqwiJwiqnFrb2nS9kmIcgEsjQydLiIlHehhpejaIjzh9eomSjZR%2BipslWIRLAgMDOR2DOqKogTB9pCUJBagDBXR6XB0EBkIIsaRsGGMMAxoDBgYHTKJiUYEGDAzHC9EACcUGkIgFzgwZ0QsSBcXHiQvOwgDdEwfFs0sDzt4S6BK4xYjkDOzn0unFeBzOBijIm1Dgmg5YFQwsCMjp1oJ8LyIAACH5BAkKAAAALAAAAAAgACAAAATwEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GGl6NoiPOH16iZKNlH6KmyWFOggHhEEvAwwMA0N9GBsEC6amhnVcEwavDAazGwIDaH1ipaYLBUTCGgQDA8NdHz0FpqgTBwsLqAbWAAnIA4FWKdMLGdYGEgraigbT0OITBcg5QwPT4xLrROZL6AuQAPUS7bxLpoWidY0JtxLHKhwwMJBTHgPKdEQAACH5BAkKAAAALAAAAAAgACAAAATrEMhJaVKp6s2nIkqFZF2VIBWhUsJaTokqUCoBq%2BE71SRQeyqUToLA7VxF0JDyIQh%2FMVVPMt1ECZlfcjZJ9mIKoaTl1MRIl5o4CUKXOwmyrCInCKqcWtvadL2SYhyASyNDJ0uIiUd6GAULDJCRiXo1CpGXDJOUjY%2BYip9DhToJA4RBLwMLCwVDfRgbBAaqqoZ1XBMHswsHtxtFaH1iqaoGNgAIxRpbFAgfPQSqpbgGBqUD1wBXeCYp1AYZ19JJOYgH1KwA4UBvQwXUBxPqVD9L3sbp2BNk2xvvFPJd%2BMFCN6HAAIKgNggY0KtEBAAh%2BQQJCgAAACwAAAAAIAAgAAAE6BDISWlSqerNpyJKhWRdlSAVoVLCWk6JKlAqAavhO9UkUHsqlE6CwO1cRdCQ8iEIfzFVTzLdRAmZX3I2SfYIDMaAFdTESJeaEDAIMxYFqrOUaNW4E4ObYcCXaiBVEgULe0NJaxxtYksjh2NLkZISgDgJhHthkpU4mW6blRiYmZOlh4JWkDqILwUGBnE6TYEbCgevr0N1gH4At7gHiRpFaLNrrq8HNgAJA70AWxQIH1%2BvsYMDAzZQPC9VCNkDWUhGkuE5PxJNwiUK4UfLzOlD4WvzAHaoG9nxPi5d%2BjYUqfAhhykOFwJWiAAAIfkECQoAAAAsAAAAACAAIAAABPAQyElpUqnqzaciSoVkXVUMFaFSwlpOCcMYlErAavhOMnNLNo8KsZsMZItJEIDIFSkLGQoQTNhIsFehRww2CQLKF0tYGKYSg%2BygsZIuNqJksKgbfgIGepNo2cIUB3V1B3IvNiBYNQaDSTtfhhx0CwVPI0UJe0%2Bbm4g5VgcGoqOcnjmjqDSdnhgEoamcsZuXO1aWQy8KAwOAuTYYGwi7w5h%2BKr0SJ8MFihpNbx%2B4Erq7BYBuzsdiH1jCAzoSfl0rVirNbRXlBBlLX%2BBP0XJLAPGzTkAuAOqb0WT5AH7OcdCm5B8TgRwSRKIHQtaLCwg1RAAAOwAAAAAAAAAAAA%3D%3D);
+    width: 32px;
+    height: 32px;
+}
+.reveal > .overlay header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+}
+.reveal > .overlay header a {
+    display: inline-block;
+    float: right;
+    opacity: 0.6;
+    box-sizing: border-box;
+    padding: 0 10px;
+    width: 40px;
+    height: 40px;
+    line-height: 36px;
+}
+.reveal > .overlay header a:hover {
+    opacity: 1;
+}
+.reveal > .overlay header a .icon {
+    display: inline-block;
+    background-position: 50% 50%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+}
+.reveal > .overlay header a.close .icon {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABkklEQVRYR8WX4VHDMAxG6wnoJrABZQPYBCaBTWAD2g1gE5gg6OOsXuxIlr40d81dfrSJ9V4c2VLK7spHuTJ/5wpM07QXuXc5X0opX2tEJcadjHuV80li/FgxTIEK/5QBCICBD6xEhSMGHgQPgBgLiYVAB1dpSqKDawxTohFw4JSEA3clzgIBPCURwE2JucBR7rhPJJv5OpJwDX+SfDjgx1wACQeJG1aChP9K/IMmdZ8DtESV1WyP3Bt4MwM6sj4NMxMYiqUWHQu4KYA/SYkIjOsm3BXYWMKFDwU2khjCQ4ELJUJ4SmClRArOCmSXGuKma0fYD5CbzHxFpCSGAhfAVSSUGDUk2BWZaff2g6GE15BsBQ9nwmpIGDiyHQddwNTMKkbZaf9fajXQca1EX44puJZUsnY0ObGmITE3GVLCbEhQUjGVt146j6oasWN+49Vph2w1pZ5EansNZqKBm1txbU57iRRcZ86RWMDdWtBJUHBHwoQPi1GV+JCbntmvok7iTX4/Up9mgyTc/FJYDTcndgH/AA5A/CHsyEkVAAAAAElFTkSuQmCC);
+}
+.reveal > .overlay header a.external .icon {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAcElEQVRYR+2WSQoAIQwEzf8f7XiOMkUQxUPlGkM3hVmiQfQR9GYnH1SsAQlI4DiBqkCMoNb9y2e90IAEJPAcgdznU9+engMaeJ7Azh5Y1U67gAho4DqBqmB1buAf0MB1AlVBek83ZPkmJMGc1wAR+AAqod/B97TRpQAAAABJRU5ErkJggg==);
+}
+.reveal > .overlay .viewport {
+    display: flex;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.reveal > .overlay.overlay-preview .viewport iframe {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+.reveal > .overlay.overlay-preview.loaded .viewport iframe {
+    visibility: visible;
+    opacity: 1;
+}
+.reveal > .overlay.overlay-preview.loaded .viewport-inner {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    letter-spacing: normal;
+    text-align: center;
+}
+.reveal > .overlay.overlay-preview .x-frame-error {
+    opacity: 0;
+    transition: opacity 0.3s ease 0.3s;
+}
+.reveal > .overlay.overlay-preview.loaded .x-frame-error {
+    opacity: 1;
+}
+.reveal > .overlay.overlay-preview.loaded .spinner {
+    transform: scale(0.2);
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal > .overlay.overlay-help .viewport {
+    overflow: auto;
+    color: #fff;
+}
+.reveal > .overlay.overlay-help .viewport .viewport-inner {
+    margin: auto;
+    padding: 20px 20px 80px 20px;
+    width: 600px;
+    letter-spacing: normal;
+    text-align: center;
+}
+.reveal > .overlay.overlay-help .viewport .viewport-inner .title {
+    font-size: 20px;
+}
+.reveal > .overlay.overlay-help .viewport .viewport-inner table {
+    border: 1px solid #fff;
+    border-collapse: collapse;
+    font-size: 16px;
+}
+.reveal > .overlay.overlay-help .viewport .viewport-inner table td,
+.reveal > .overlay.overlay-help .viewport .viewport-inner table th {
+    vertical-align: middle;
+    border: 1px solid #fff;
+    padding: 14px;
+    width: 200px;
+}
+.reveal > .overlay.overlay-help .viewport .viewport-inner table th {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.reveal .playback {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    z-index: 30;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.reveal.overview .playback {
+    visibility: hidden;
+    opacity: 0;
+}
+.reveal .hljs {
+    min-height: 100%;
+}
+.reveal .hljs table {
+    margin: initial;
+}
+.reveal .hljs-ln-code,
+.reveal .hljs-ln-numbers {
+    border: 0;
+    padding: 0;
+}
+.reveal .hljs-ln-numbers {
+    vertical-align: top;
+    opacity: 0.6;
+    padding-right: 0.75em;
+    text-align: right;
+}
+.reveal .hljs.has-highlights tr:not(.highlight-line) {
+    opacity: 0.4;
+}
+.reveal .hljs.has-highlights.fragment {
+    transition: all 0.2s ease;
+}
+.reveal .hljs:not(:first-child).fragment {
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+.reveal pre[data-auto-animate-target] {
+    overflow: hidden;
+}
+.reveal pre[data-auto-animate-target] code {
+    height: 100%;
+}
+.reveal .roll {
+    display: inline-block;
+    vertical-align: top;
+    perspective: 400px;
+    perspective-origin: 50% 50%;
+    overflow: hidden;
+    line-height: 1.2;
+}
+.reveal .roll:hover {
+    background: 0 0;
+    text-shadow: none;
+}
+.reveal .roll span {
+    display: block;
+    position: relative;
+    transform-origin: 50% 0;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transition: all 0.4s ease;
+    padding: 0 2px;
+    pointer-events: none;
+}
+.reveal .roll:hover span {
+    transform: translate3d(0, 0, -45px) rotateX(90deg);
+    background: rgba(0, 0, 0, 0.5);
+}
+.reveal .roll span:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate3d(0, 110%, 0) rotateX(-90deg);
+    transform-origin: 50% 0;
+    backface-visibility: hidden;
+    padding: 0 2px;
+    content: attr(data-title);
+}
+.reveal aside.notes {
+    display: none;
+}
+.reveal .speaker-notes {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 1;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: #f5f5f5;
+    padding: 14px 18px 14px 18px;
+    width: 33.3333333333%;
+    height: 100%;
+    overflow: auto;
+    color: #222;
+    font-size: 18px;
+    line-height: 1.4;
+    font-family: Helvetica, sans-serif;
+    text-align: left;
+    -webkit-overflow-scrolling: touch;
+}
+.reveal .speaker-notes .notes-placeholder {
+    color: #ccc;
+    font-style: italic;
+}
+.reveal .speaker-notes:focus {
+    outline: 0;
+}
+.reveal .speaker-notes:before {
+    display: block;
+    opacity: 0.5;
+    margin-bottom: 10px;
+    content: 'Speaker notes';
+}
+.reveal.show-notes {
+    max-width: 75%;
+    overflow: visible;
+}
+.reveal.show-notes .speaker-notes {
+    display: block;
+}
+@media screen and (min-width: 1600px) {
+    .reveal .speaker-notes {
+        font-size: 20px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .reveal.show-notes {
+        border-left: 0;
+        max-width: none;
+        max-height: 70%;
+        max-height: 70vh;
+        overflow: visible;
+    }
+    .reveal.show-notes .speaker-notes {
+        top: 100%;
+        left: 0;
+        border: 0;
+        width: 100%;
+        height: 30vh;
+    }
+}
+@media screen and (max-width: 600px) {
+    .reveal.show-notes {
+        max-height: 60%;
+        max-height: 60vh;
+    }
+    .reveal.show-notes .speaker-notes {
+        top: 100%;
+        height: 40vh;
+    }
+    .reveal .speaker-notes {
+        font-size: 14px;
+    }
+}
+.reveal .jump-to-slide {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 30;
+    font-size: 32px;
+    -webkit-tap-highlight-color: transparent;
+}
+.reveal .jump-to-slide-input {
+    border: 0;
+    background: 0 0;
+    padding: 8px;
+    color: currentColor;
+    font-size: inherit;
+}
+.reveal .jump-to-slide-input::placeholder {
+    opacity: 0.5;
+    color: currentColor;
+}
+.reveal.has-dark-background .jump-to-slide-input {
+    color: #fff;
+}
+.reveal.has-light-background .jump-to-slide-input {
+    color: #222;
+}
+.reveal .jump-to-slide-input:focus {
+    outline: 0;
+}
+.zoomed .reveal *,
+.zoomed .reveal :after,
+.zoomed .reveal :before {
+    backface-visibility: visible !important;
+}
+.zoomed .reveal .controls,
+.zoomed .reveal .progress {
+    opacity: 0;
+}
+.zoomed .reveal .roll span {
+    background: 0 0;
+}
+.zoomed .reveal .roll span:after {
+    visibility: hidden;
+}
+.reveal-viewport.loading-scroll-mode {
+    visibility: hidden;
+}
+.reveal-viewport.reveal-scroll {
+    z-index: 1;
+    margin: 0 auto;
+    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    --r-scrollbar-width: 7px;
+    --r-scrollbar-trigger-size: 5px;
+    --r-controls-spacing: 8px;
+}
+@media screen and (max-width: 500px) {
+    .reveal-viewport.reveal-scroll {
+        --r-scrollbar-width: 3px;
+        --r-scrollbar-trigger-size: 3px;
+    }
+}
+.reveal-viewport.reveal-scroll .backgrounds,
+.reveal-viewport.reveal-scroll .controls,
+.reveal-viewport.reveal-scroll .playback,
+.reveal-viewport.reveal-scroll .progress,
+.reveal-viewport.reveal-scroll .slide-number,
+.reveal-viewport.reveal-scroll .speaker-notes {
+    display: none !important;
+}
+.reveal-viewport.reveal-scroll .overlay,
+.reveal-viewport.reveal-scroll .pause-overlay {
+    position: fixed;
+}
+.reveal-viewport.reveal-scroll .reveal {
+    overflow: visible;
+    touch-action: manipulation;
+}
+.reveal-viewport.reveal-scroll .slides {
+    display: block;
+    position: static;
+    top: auto;
+    left: auto;
+    perspective: none;
+    perspective-origin: 50% 50%;
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+    overflow: visible;
+    pointer-events: initial;
+}
+.reveal-viewport.reveal-scroll .scroll-page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: calc(var(--page-height) + var(--page-scroll-padding));
+    overflow: visible;
+}
+.reveal-viewport.reveal-scroll .scroll-page-sticky {
+    position: sticky;
+    top: 0;
+    height: var(--page-height);
+}
+.reveal-viewport.reveal-scroll .scroll-page-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.reveal-viewport.reveal-scroll .scroll-page section {
+    display: block !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: scale(var(--slide-scale)) translate(-50%, -50%) !important;
+    transform-origin: 0 0 !important;
+    transform-style: flat !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: var(--slide-width) !important;
+    height: var(--slide-height) !important;
+}
+.reveal-viewport.reveal-scroll .slide-background {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: visible;
+    opacity: 1;
+    z-index: auto !important;
+    width: 100%;
+    height: 100%;
+    touch-action: manipulation;
+}
+.reveal-viewport.reveal-scroll[data-scrollbar='auto']::-webkit-scrollbar,
+.reveal-viewport.reveal-scroll[data-scrollbar='true']::-webkit-scrollbar {
+    display: none;
+}
+.reveal-viewport.reveal-scroll[data-scrollbar='auto'],
+.reveal-viewport.reveal-scroll[data-scrollbar='true'] {
+    scrollbar-width: none;
+}
+.reveal-viewport.has-dark-background,
+.reveal.has-dark-background {
+    --r-overlay-element-bg-color: 240, 240, 240;
+    --r-overlay-element-fg-color: 0, 0, 0;
+}
+.reveal-viewport.has-light-background,
+.reveal.has-light-background {
+    --r-overlay-element-bg-color: 0, 0, 0;
+    --r-overlay-element-fg-color: 240, 240, 240;
+}
+.reveal-viewport.reveal-scroll .scrollbar {
+    position: sticky;
+    top: 50%;
+    opacity: 0;
+    z-index: 20;
+    transition: all 0.3s ease;
+}
+.reveal-viewport.reveal-scroll .scrollbar.visible,
+.reveal-viewport.reveal-scroll .scrollbar:hover {
+    opacity: 1;
+}
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-inner {
+    position: absolute;
+    top: 0;
+    right: var(--r-controls-spacing);
+    transform: translateY(-50%);
+    z-index: 10;
+    border-radius: var(--r-scrollbar-width);
+    width: var(--r-scrollbar-width);
+    height: calc(var(--viewport-height) - var(--r-controls-spacing) * 2);
+}
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-playhead {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 11;
+    transition: background-color 0.2s ease;
+    border-radius: var(--r-scrollbar-width);
+    background-color: rgba(var(--r-overlay-element-bg-color), 1);
+    width: var(--r-scrollbar-width);
+    height: var(--r-scrollbar-width);
+}
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide {
+    position: absolute;
+    transition: background-color 0.2s ease;
+    box-shadow: 0 0 0 1px rgba(var(--r-overlay-element-fg-color), 0.1);
+    border-radius: var(--r-scrollbar-width);
+    background-color: rgba(var(--r-overlay-element-bg-color), 0.2);
+    width: 100%;
+}
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide:after {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0);
+    width: 200%;
+    height: 100%;
+    content: '';
+}
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active,
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide:hover {
+    background-color: rgba(var(--r-overlay-element-bg-color), 0.4);
+}
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-trigger {
+    position: absolute;
+    transition: background-color 0.2s ease;
+    width: 100%;
+}
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active.has-triggers {
+    z-index: 10;
+    background-color: rgba(var(--r-overlay-element-bg-color), 0.4);
+}
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active .scrollbar-trigger:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.4;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+    border-radius: 20px;
+    background-color: rgba(var(--r-overlay-element-bg-color), 1);
+    width: var(--r-scrollbar-trigger-size);
+    height: var(--r-scrollbar-trigger-size);
+    content: '';
+}
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active .scrollbar-trigger.active:after,
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active .scrollbar-trigger.active ~ .scrollbar-trigger:after {
+    opacity: 1;
+}
+.reveal-viewport.reveal-scroll .scrollbar .scrollbar-slide.active .scrollbar-trigger ~ .scrollbar-trigger.active:after {
+    transform: translate(calc(var(--r-scrollbar-width) * -2), 0);
+    background-color: rgba(var(--r-overlay-element-bg-color), 1);
+}
+html.reveal-print * {
+    -webkit-print-color-adjust: exact;
+}
+html.reveal-print {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+html.reveal-print body {
+    float: none !important;
+    margin: 0 auto !important;
+    border: 0;
+    padding: 0;
+    overflow: visible;
+}
+html.reveal-print .nestedarrow,
+html.reveal-print .reveal .controls,
+html.reveal-print .reveal .playback,
+html.reveal-print .reveal .progress,
+html.reveal-print .reveal.overview,
+html.reveal-print .state-background {
+    display: none !important;
+}
+html.reveal-print .reveal pre code {
+    overflow: hidden !important;
+}
+html.reveal-print .reveal {
+    width: auto !important;
+    height: auto !important;
+    overflow: hidden !important;
+}
+html.reveal-print .reveal .slides {
+    position: static;
+    width: 100% !important;
+    height: auto !important;
+    zoom: 1 !important;
+    display: block;
+    top: auto;
+    left: auto;
+    perspective: none;
+    perspective-origin: 50% 50%;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible;
+    pointer-events: initial;
+}
+html.reveal-print .reveal .slides .pdf-page {
+    position: relative;
+    page-break-after: always;
+    z-index: 1;
+    overflow: hidden;
+}
+html.reveal-print .reveal .slides .pdf-page:last-of-type {
+    page-break-after: avoid;
+}
+html.reveal-print .reveal .slides section {
+    display: block !important;
+    position: absolute !important;
+    transform: none !important;
+    transform-style: flat !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 1px;
+}
+html.reveal-print .reveal section.stack {
+    position: relative !important;
+    page-break-after: avoid !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: auto !important;
+}
+html.reveal-print .reveal img {
+    box-shadow: none;
+}
+html.reveal-print .reveal .backgrounds {
+    display: none;
+}
+html.reveal-print .reveal .slide-background {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: auto !important;
+    width: 100%;
+    height: 100%;
+}
+html.reveal-print .reveal.show-notes {
+    max-width: none;
+    max-height: none;
+}
+html.reveal-print .reveal .speaker-notes-pdf {
+    display: block;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    z-index: 100;
+    width: 100%;
+    height: auto;
+    max-height: none;
+}
+html.reveal-print .reveal .speaker-notes-pdf[data-layout='separate-page'] {
+    position: relative;
+    page-break-after: always;
+    border: 0;
+    background-color: transparent;
+    padding: 20px;
+    color: inherit;
+}
+html.reveal-print .reveal .slide-number-pdf {
+    display: block;
+    position: absolute;
+    visibility: visible;
+    font-size: 14px;
+}
+html.reveal-print .aria-status {
+    display: none;
+}
+@media print {
+    html:not(.print-pdf) {
+        width: auto;
+        height: auto;
+        overflow: visible;
+    }
+    html:not(.print-pdf) body {
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+    }
+    html:not(.print-pdf) .reveal {
+        background: #fff;
+        font-size: 20pt;
+    }
+    html:not(.print-pdf) .reveal .backgrounds,
+    html:not(.print-pdf) .reveal .controls,
+    html:not(.print-pdf) .reveal .progress,
+    html:not(.print-pdf) .reveal .slide-number,
+    html:not(.print-pdf) .reveal .state-background {
+        display: none !important;
+    }
+    html:not(.print-pdf) .reveal li,
+    html:not(.print-pdf) .reveal p,
+    html:not(.print-pdf) .reveal td {
+        color: #000;
+        font-size: 20pt !important;
+    }
+    html:not(.print-pdf) .reveal h1,
+    html:not(.print-pdf) .reveal h2,
+    html:not(.print-pdf) .reveal h3,
+    html:not(.print-pdf) .reveal h4,
+    html:not(.print-pdf) .reveal h5,
+    html:not(.print-pdf) .reveal h6 {
+        height: auto;
+        color: #000 !important;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: left;
+    }
+    html:not(.print-pdf) .reveal h1 {
+        font-size: 28pt !important;
+    }
+    html:not(.print-pdf) .reveal h2 {
+        font-size: 24pt !important;
+    }
+    html:not(.print-pdf) .reveal h3 {
+        font-size: 22pt !important;
+    }
+    html:not(.print-pdf) .reveal h4 {
+        font-variant: small-caps;
+        font-size: 22pt !important;
+    }
+    html:not(.print-pdf) .reveal h5 {
+        font-size: 21pt !important;
+    }
+    html:not(.print-pdf) .reveal h6 {
+        font-style: italic;
+        font-size: 20pt !important;
+    }
+    html:not(.print-pdf) .reveal a:link,
+    html:not(.print-pdf) .reveal a:visited {
+        color: #000 !important;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+    html:not(.print-pdf) .reveal div,
+    html:not(.print-pdf) .reveal ol,
+    html:not(.print-pdf) .reveal p,
+    html:not(.print-pdf) .reveal ul {
+        display: block;
+        position: static;
+        visibility: visible;
+        margin: 0;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        text-align: left !important;
+    }
+    html:not(.print-pdf) .reveal pre,
+    html:not(.print-pdf) .reveal table {
+        margin-right: 0;
+        margin-left: 0;
+    }
+    html:not(.print-pdf) .reveal pre code {
+        padding: 20px;
+    }
+    html:not(.print-pdf) .reveal blockquote {
+        margin: 20px 0;
+    }
+    html:not(.print-pdf) .reveal .slides {
+        position: static !important;
+        top: 0 !important;
+        left: 0 !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        padding: 0 !important;
+        width: auto !important;
+        height: auto !important;
+        zoom: 1 !important;
+        display: block !important;
+        transform: none !important;
+        perspective: none;
+        perspective-origin: 50% 50%;
+        overflow: visible !important;
+        text-align: left !important;
+    }
+    html:not(.print-pdf) .reveal .slides section {
+        display: block !important;
+        position: static !important;
+        top: 0 !important;
+        left: 0 !important;
+        page-break-after: always !important;
+        transform: none !important;
+        transform-style: flat !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: auto !important;
+        transition: none !important;
+        margin-top: 0 !important;
+        margin-left: 0 !important;
+        padding: 60px 20px !important;
+        width: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+    html:not(.print-pdf) .reveal .slides section.stack {
+        padding: 0 !important;
+    }
+    html:not(.print-pdf) .reveal .slides section:last-of-type {
+        page-break-after: avoid !important;
+    }
+    html:not(.print-pdf) .reveal .slides section .fragment {
+        transform: none !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    html:not(.print-pdf) .reveal .r-fit-text {
+        white-space: normal !important;
+    }
+    html:not(.print-pdf) .reveal section img {
+        display: block;
+        margin: 15px 0;
+        box-shadow: none;
+        border: 1px solid #666;
+        background: #fff;
+    }
+    html:not(.print-pdf) .reveal section small {
+        font-size: 0.8em;
+    }
+    html:not(.print-pdf) .reveal .hljs {
+        max-height: 100%;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-size: 15pt;
+        word-break: break-word;
+    }
+    html:not(.print-pdf) .reveal .hljs .hljs-ln-numbers {
+        white-space: nowrap;
+    }
+    html:not(.print-pdf) .reveal .hljs td {
+        color: inherit !important;
+        font-size: inherit !important;
+    }
+}
